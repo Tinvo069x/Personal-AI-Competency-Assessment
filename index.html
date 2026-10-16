@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Personal AI Competency Assessment — Tin Vo Quoc</title>
+<style>
+:root{
+  --text:#2d2f33; --muted:#6d7178; --line:#dedede; --soft:#f8f8f7; --page:#ffffff;
+  --learn:#39a866; --lead:#d2a527; --access:#77569a; --scale:#5476a8; --secure:#d4574f; --automate:#9b764d;
+  --shadow:0 1px 0 rgba(0,0,0,.02);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--text);font-family:Inter,"Segoe UI",Arial,sans-serif;font-size:16px;line-height:1.52}
+button,select,input,textarea{font:inherit}
+button{cursor:pointer}
+.container{max-width:1180px;margin:0 auto;padding:30px 34px 70px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:40px}
+.segment{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.segment button{border:0;background:#fff;padding:11px 17px;color:var(--muted)}
+.segment button.active{background:#f7f7f6;color:var(--text);font-weight:700}
+.tool-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:1px solid #bfc1c5;border-radius:9px;padding:10px 15px;background:#fff;color:#36383c;font-weight:650}
+.btn:hover{background:#f6f6f4}.btn.primary{border-color:#2e6fa9;color:#1d68a2}.btn.danger{border-color:#d6d6d6}
+.hero{margin-bottom:38px}
+.hero h1{font-size:clamp(34px,4.5vw,58px);line-height:1.03;max-width:760px;margin:0 0 17px;letter-spacing:-.035em;font-weight:830}
+.hero .lead{font-size:20px;line-height:1.55;color:#5f6267;max-width:930px;margin:0}
+.author-card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-top:22px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;box-shadow:var(--shadow)}
+.author-card small{display:block;color:var(--muted);margin-bottom:2px}.author-card strong{font-size:17px}.author-meta{color:#6a6d73}.author-actions{display:flex;gap:10px;flex-wrap:wrap}
+.section{margin:36px 0}.section>h2{font-size:21px;margin:0 0 9px}.section-intro{color:#676b71;max-width:930px;margin:0 0 18px}
+.bullets{padding-left:23px;line-height:1.9;margin:10px 0 0}.bullets li{padding-left:4px}
+.aspect-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.aspect{border:1px solid var(--line);border-radius:12px;padding:18px 20px;min-height:126px}.aspect h3{margin:0 0 8px;font-size:17px}.aspect p{margin:0;color:#6b6e74}.aspect .rel{font-size:13px;color:#777b80;margin-top:10px}
+.overview{border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:22px}
+.overview h2{font-size:21px;margin:0 0 4px}.overview .hint{font-size:14px;color:#74777c;margin-bottom:20px}
+.overview-grid{display:grid;grid-template-columns:1.3fr .9fr;gap:30px;align-items:center}
+.framework{height:330px;position:relative;display:grid;place-items:center}
+.framework .axis{position:absolute;color:#5e6267;font-weight:700}.axis.people{top:3px;left:50%;transform:translateX(-50%)}.axis.process{bottom:3px;left:50%;transform:translateX(-50%)}.axis.tech{left:4px;top:50%;transform:translateY(-50%)}.axis.data{right:4px;top:50%;transform:translateY(-50%)}
+.diamond{width:245px;height:245px;border:1px solid #d6d8da;transform:rotate(45deg);position:relative}.diamond:before,.diamond:after{content:"";position:absolute;background:#ececeb}.diamond:before{width:1px;height:100%;left:50%;top:0}.diamond:after{height:1px;width:100%;left:0;top:50%}
+.topic-dot{position:absolute;transform:translate(-50%,-50%);font-size:13px;font-weight:800;background:#fff;padding:5px 8px;border-radius:8px;border:1px solid #e1e2e2}.t-learn{left:34%;top:30%;color:var(--learn)}.t-lead{left:64%;top:30%;color:var(--lead)}.t-access{left:76%;top:51%;color:var(--access)}.t-scale{left:66%;top:72%;color:var(--scale)}.t-secure{left:35%;top:72%;color:var(--secure)}.t-automate{left:23%;top:51%;color:var(--automate)}
+.topic-summary{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px}.topic-summary div{display:flex;justify-content:space-between;border-bottom:1px solid #eeeeec;padding:7px 0;font-weight:700}.topic-summary span:first-child{color:#444}.topic-summary .score{color:#8b8e92}
+.progress-line{margin-top:16px;font-size:14px;color:#72757a}.progress-track{height:7px;border-radius:99px;background:#eeeeec;margin-top:8px;overflow:hidden}.progress-track i{display:block;height:100%;width:0;background:#62666b;transition:.2s}
+.guide{border:1px solid var(--line);border-radius:14px;padding:20px;margin:34px 0}.guide h2{font-size:22px;margin:0 0 10px}.guide p{margin:7px 0;color:#60646a}.scale-guide{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:18px}.scale-guide .g{border-top:4px solid #dfe0e0;padding-top:8px}.scale-guide .g:nth-child(2){border-color:#b6b8bb}.scale-guide .g:nth-child(3){border-color:#7a7d82}.scale-guide .g:nth-child(4){border-color:#55595f}.scale-guide .g:nth-child(5){border-color:#26292d}.scale-guide strong{display:block;font-size:14px}.scale-guide span{font-size:13px;color:#61656a}
+.topic{margin:48px 0 56px}.topic-head{border-left:5px solid var(--accent);padding-left:17px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start}.topic-title{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.topic-title h2{margin:0;font-size:30px;letter-spacing:-.025em}.topic-title .vi{font-size:17px;color:#666a70}.topic-kicker{font-size:14px;color:#666a70;margin-top:1px}.topic-desc{font-size:17px;max-width:760px;margin:10px 0 0}.topic-side{text-align:right;min-width:230px}.topic-score{font-size:14px;color:#666;margin-bottom:8px}.target-row{display:flex;align-items:center;justify-content:flex-end;gap:8px;color:#666;font-size:14px}.target-row select{border:1px solid #d6d7d8;border-radius:7px;background:#fff;padding:7px 31px 7px 10px}
+.insight-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}.insight-card{border:1px solid var(--line);border-radius:12px;padding:17px;min-height:132px}.insight-card b{display:block;font-size:27px;color:var(--accent);line-height:1;margin-bottom:7px}.insight-card p{margin:0;font-size:14px;line-height:1.45}.insight-card small{display:block;margin-top:8px;color:#777b80}
+.criteria{display:grid;gap:14px}.criterion{border:1px solid var(--line);border-radius:12px;padding:17px 18px;background:#fff}.criterion h3{margin:0 0 2px;font-size:17px}.criterion h3 .code{color:var(--accent);margin-right:6px}.criterion .question{color:#686b70;margin-bottom:12px}.choices{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.choice{border:1px solid #dedfdf;border-radius:8px;background:#fff;text-align:left;padding:11px 12px;min-height:112px;transition:.15s;color:#333}.choice:hover{border-color:#aeb1b4;transform:translateY(-1px)}.choice .ch-label{display:block;font-weight:750;font-size:14px;margin-bottom:5px}.choice .ch-text{font-size:13px;line-height:1.42;color:#4e5156}.choice.selected{border:2px solid var(--accent);background:color-mix(in srgb,var(--accent) 7%,white)}
+.evidence-toggle{border:0;background:transparent;padding:9px 0 0;color:#666a70;font-size:14px}.evidence{display:none;margin-top:9px}.evidence.open{display:block}.evidence textarea{width:100%;min-height:72px;border:1px solid #d9dada;border-radius:8px;padding:10px 12px;resize:vertical;color:#42454a}
+.results{margin-top:64px;border-top:1px solid #e4e4e3;padding-top:34px}.results h2{font-size:26px;margin:0 0 5px}.results .rule-note{color:#65696e;max-width:1000px;margin-bottom:24px}.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}.result-card{border:1px solid var(--line);border-radius:12px;padding:18px}.result-card h3{font-size:18px;margin:0 0 12px}.canvas-wrap{height:360px;display:grid;place-items:center}.canvas-wrap canvas{max-width:100%;max-height:340px}
+.gap-list{display:grid;gap:13px}.gap-row{display:grid;grid-template-columns:90px 1fr 42px;gap:10px;align-items:center}.gap-row b{font-size:13px}.gapbar{height:10px;background:#efefed;border-radius:99px;overflow:hidden;position:relative}.gapbar .current{height:100%;background:#696d72}.gapbar .target{position:absolute;top:-3px;width:2px;height:16px;background:#26292d}.gap-row em{font-size:13px;font-style:normal;text-align:right;color:#666}
+.score-table{width:100%;border-collapse:collapse;margin-top:26px;font-size:14px}.score-table th,.score-table td{padding:10px 9px;border-bottom:1px solid #e6e6e4;text-align:left}.score-table th{font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:#6d7176}.score-table td.num{text-align:right;font-variant-numeric:tabular-nums}.score-table tfoot td{font-weight:800;border-top:2px solid #d9d9d7}
+.priority{margin-top:34px}.priority h3{font-size:21px;margin:0 0 10px}.priority-list{display:grid;gap:10px}.priority-item{border:1px solid var(--line);border-radius:10px;padding:13px 15px;display:grid;grid-template-columns:36px 120px 1fr auto;gap:12px;align-items:center}.rank{width:30px;height:30px;border-radius:50%;background:#f1f1ef;display:grid;place-items:center;font-weight:800}.priority-item .topic-name{font-weight:800}.priority-item .rec{color:#64686d}.priority-item .gap{font-weight:800}
+.export-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.footer{margin-top:52px;border-top:1px solid #e5e5e4;padding-top:22px;color:#76797d;font-size:13px}.footer strong{color:#45484c}.footer .sources{margin-top:10px;line-height:1.7}
+@media(max-width:900px){.overview-grid,.result-grid{grid-template-columns:1fr}.aspect-grid,.scale-guide,.insight-cards{grid-template-columns:1fr 1fr}.choices{grid-template-columns:1fr 1fr}.topic-head{grid-template-columns:1fr}.topic-side{text-align:left}.target-row{justify-content:flex-start}}
+@media(max-width:600px){.container{padding:22px 16px 50px}.hero h1{font-size:38px}.aspect-grid,.scale-guide,.insight-cards,.choices{grid-template-columns:1fr}.topic-summary{grid-template-columns:1fr}.priority-item{grid-template-columns:36px 1fr}.priority-item .rec,.priority-item .gap{grid-column:2}.framework{transform:scale(.85);margin:-20px 0}}
+@media print{.toolbar,.export-bar,.evidence-toggle{display:none!important}.container{max-width:none;padding:0 24px}.topic{break-inside:avoid}.criterion{break-inside:avoid}.results{break-before:page}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="toolbar">
+    <div class="segment"><button class="active" type="button">Tiếng Việt</button><button type="button" onclick="alert('Bản này đang tối ưu nội dung tiếng Việt. Có thể bổ sung bản English ở phiên bản tiếp theo.')">English</button></div>
+    <div class="tool-actions">
+      <button class="btn" onclick="exportHTML()">Xuất báo cáo (HTML)</button>
+      <button class="btn" onclick="exportCSV()">Xuất dữ liệu (CSV)</button>
+      <button class="btn primary" onclick="downloadPNG()">Tải kết quả (PNG)</button>
+      <button class="btn danger" onclick="resetAll()">Xóa điểm</button>
+    </div>
+  </div>
+
+  <header class="hero">
+    <h1>Personal AI Competency Assessment</h1>
+    <p class="lead">Công cụ tự đánh giá được cá nhân hoá cho công việc Digital Purchasing, Supply Chain Analytics, Data và Automation — giúp xác định vị trí hiện tại trên lộ trình ứng dụng AI, nhận diện khoảng trống năng lực và sắp xếp thứ tự ưu tiên phát triển.</p>
+    <div class="author-card">
+      <div>
+        <small>Personal edition</small>
+        <strong id="personDisplay">Tin Vo Quoc</strong>
+        <div class="author-meta" id="roleDisplay">Digital | Supply Chain Analytics</div>
+      </div>
+      <div class="author-actions">
+        <input id="personName" value="Tin Vo Quoc" aria-label="Họ tên" style="border:1px solid #d6d6d5;border-radius:8px;padding:9px 11px;min-width:190px" oninput="syncIdentity()" />
+        <input id="personRole" value="Digital | Supply Chain Analytics" aria-label="Vai trò" style="border:1px solid #d6d6d5;border-radius:8px;padding:9px 11px;min-width:280px" oninput="syncIdentity()" />
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2>Kết quả sau khi hoàn thành đánh giá</h2>
+    <ul class="bullets">
+      <li>Điểm cho 6 chủ đề và mức độ trưởng thành tương ứng theo 5 cấp độ: Beginner, Practitioner, Proficient, Builder và Leader.</li>
+      <li>Biểu đồ so sánh hiện trạng với mục tiêu bạn tự xác định cho từng chủ đề.</li>
+      <li>Danh sách ưu tiên cải thiện, kèm khuyến nghị gắn với công việc Data, Purchasing và Automation.</li>
+      <li>Có thể lưu trực tiếp trên trình duyệt, xuất CSV, HTML và ảnh PNG làm mốc so sánh.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Bốn khía cạnh được đánh giá</h2>
+    <p class="section-intro">Sáu chủ đề đánh giá nằm tại giao điểm của bốn khía cạnh nền tảng. Phiên bản cá nhân giữ cấu trúc Learn, Lead, Access, Scale, Secure và Automate, nhưng câu hỏi được điều chỉnh sát với workflow dữ liệu và chuỗi cung ứng.</p>
+    <div class="aspect-grid">
+      <div class="aspect"><h3>Con người</h3><p>Kỹ năng AI, data literacy, khả năng chuyển kiến thức thành cách làm ổn định và chia sẻ được.</p><div class="rel">Chủ đề liên quan: Learn, Lead, Access</div></div>
+      <div class="aspect"><h3>Quy trình</h3><p>Cách ưu tiên use case, đo lường giá trị, kiểm soát rủi ro và tự động hoá công việc.</p><div class="rel">Chủ đề liên quan: Lead, Secure, Automate</div></div>
+      <div class="aspect"><h3>Công nghệ</h3><p>Công cụ AI, BI, automation, data platform và khả năng mở rộng giải pháp.</p><div class="rel">Chủ đề liên quan: Learn, Scale, Automate</div></div>
+      <div class="aspect"><h3>Dữ liệu</h3><p>Chất lượng, tính thống nhất, khả năng truy cập, tái sử dụng, truy vết và bảo mật dữ liệu.</p><div class="rel">Chủ đề liên quan: Access, Scale, Secure</div></div>
+    </div>
+  </section>
+
+  <section class="overview">
+    <h2>Tổng quan</h2>
+    <div class="hint">Mỗi cạnh nối hai khía cạnh. Điểm chủ đề càng cao, mức độ trưởng thành càng lớn.</div>
+    <div class="overview-grid">
+      <div class="framework">
+        <div class="axis people">Con người</div><div class="axis process">Quy trình</div><div class="axis tech">Công nghệ</div><div class="axis data">Dữ liệu</div>
+        <div class="diamond"></div>
+        <div class="topic-dot t-learn">Learn</div><div class="topic-dot t-lead">Lead</div><div class="topic-dot t-access">Access</div><div class="topic-dot t-scale">Scale</div><div class="topic-dot t-secure">Secure</div><div class="topic-dot t-automate">Automate</div>
+      </div>
+      <div>
+        <div id="overviewScores" class="topic-summary"></div>
+        <div class="progress-line"><span id="progressText">0/30 tiêu chí đã chấm</span><div class="progress-track"><i id="progressBar"></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide">
+    <h2>Hướng dẫn chấm điểm</h2>
+    <p>Mỗi chủ đề gồm 5 tiêu chí. Với từng tiêu chí, chọn mô tả phản ánh đúng hiện trạng của bạn, không dựa trên kế hoạch tương lai. Nếu đang ở giữa hai mức, chọn mức thấp hơn.</p>
+    <p>Ghi lại căn cứ cho từng lựa chọn — ví dụ dashboard, workflow, tool, report, số giờ tiết kiệm, KPI hoặc link project — tại mục “Ghi chú bằng chứng” để làm mốc cho lần đánh giá sau.</p>
+    <div class="scale-guide">
+      <div class="g"><strong>LEVEL 1 · Cơ bản</strong><span><b>Beginner – Learn AI</b><br>Biết sử dụng AI để hỏi đáp, tìm kiếm thông tin, dịch thuật và xử lý các tác vụ đơn giản.</span></div>
+      <div class="g"><strong>LEVEL 2 · Ứng dụng</strong><span><b>Practitioner – Use AI</b><br>Sử dụng AI thường xuyên trong công việc; biết viết prompt có cấu trúc, xử lý email, tài liệu, Excel và nội dung.</span></div>
+      <div class="g"><strong>LEVEL 3 · Tích hợp</strong><span><b>Proficient – Integrate AI</b><br>Kết hợp AI với phân tích dữ liệu, Power BI, SQL, Python, Supply Chain và hỗ trợ ra quyết định.</span></div>
+      <div class="g"><strong>LEVEL 4 · Tự động hóa</strong><span><b>Builder – Automate with AI</b><br>Xây dựng workflow AI, tool nội bộ, automation, AI Agent hoặc kết nối AI với database/API/Power Platform.</span></div>
+      <div class="g"><strong>LEVEL 5 · Dẫn dắt</strong><span><b>Leader – Transform with AI</b><br>Thiết kế chiến lược AI, chuẩn hóa cách sử dụng AI cho team, xây use case, governance và thúc đẩy AI transformation.</span></div>
+    </div>
+  </section>
+
+  <main id="topics"></main>
+
+  <section class="results" id="results">
+    <h2>Kết quả</h2>
+    <p class="rule-note">Thang điểm 1–5: LEVEL 1 = Beginner – Learn AI; LEVEL 2 = Practitioner – Use AI; LEVEL 3 = Proficient – Integrate AI; LEVEL 4 = Builder – Automate with AI; LEVEL 5 = Leader – Transform with AI. Điểm chủ đề là trung bình 5 tiêu chí đã chấm; điểm tổng là trung bình của 6 chủ đề.</p>
+    <div class="result-grid">
+      <div class="result-card"><h3>Hiện trạng và mục tiêu</h3><div class="canvas-wrap"><canvas id="radar" width="520" height="360"></canvas></div></div>
+      <div class="result-card"><h3>Khoảng cách theo chủ đề</h3><div id="gapList" class="gap-list"></div></div>
+    </div>
+    <table class="score-table">
+      <thead><tr><th>Chủ đề</th><th>Khía cạnh</th><th>Đã chấm</th><th>Điểm</th><th>Giai đoạn</th><th>Mục tiêu</th><th>Khoảng cách</th></tr></thead>
+      <tbody id="scoreBody"></tbody><tfoot><tr><td colspan="3">Tổng</td><td class="num" id="overallScore">–</td><td id="overallStage">–</td><td></td><td></td></tr></tfoot>
+    </table>
+    <div class="priority"><h3>Ưu tiên cải thiện</h3><div id="priorityList" class="priority-list"></div></div>
+    <div class="export-bar"><button class="btn" onclick="saveLocal()">Lưu đánh giá</button><button class="btn primary" onclick="downloadPNG()">Tải PNG kết quả</button><button class="btn" onclick="window.print()">In / Save PDF</button></div>
+  </section>
+
+  <footer class="footer">
+    <strong>Personal AI Competency Assessment — adapted for Tin Vo Quoc</strong>
+    <div class="sources">Cấu trúc 6 chủ đề được giữ lại, trong khi thang trưởng thành được tùy biến thành 5 mức từ Beginner → Practitioner → Proficient → Builder → Leader. Nội dung câu hỏi đã được cá nhân hoá cho Data, Digital Purchasing, Supply Chain và Automation.</div>
+  </footer>
+</div>
+<script>
+const stages=['','Beginner – Learn AI','Practitioner – Use AI','Proficient – Integrate AI','Builder – Automate with AI','Leader – Transform with AI'];
+const levelNames=['','Cơ bản','Ứng dụng','Tích hợp','Tự động hóa','Dẫn dắt'];
+const leaderTexts={
+ learn:'Chuẩn hóa năng lực AI thành cách làm dùng chung, hướng dẫn team và chủ động dẫn dắt các use case AI mới.',
+ lead:'Thiết kế roadmap/portfolio AI, gắn với KPI và governance, đồng thời dẫn dắt nhiều stakeholder cùng triển khai.',
+ access:'Thiết lập chuẩn dữ liệu, ownership, lineage và cách tái sử dụng dữ liệu để nhiều team có thể áp dụng nhất quán.',
+ scale:'Thiết kế nền tảng và operating model có thể mở rộng trên nhiều team/process, với chuẩn deployment và monitoring rõ ràng.',
+ secure:'Thiết lập governance, policy, audit và human oversight để AI được sử dụng an toàn và có trách nhiệm ở quy mô rộng.',
+ automate:'Thiết kế AI Agent hoặc automation end-to-end, chuẩn hóa cách vận hành và dẫn dắt AI transformation cho team/process.'
+};
+function levelOptionText(topicKey,opts,level){
+  if(level<=4) return opts[level-1];
+  return leaderTexts[topicKey] || 'Chuẩn hóa cách làm, dẫn dắt team và mở rộng AI transformation.'
+}
+function shortStage(v){
+  if(v==null||Number.isNaN(v)) return 'Chưa chấm';
+  if(v<1.5) return 'Beginner';
+  if(v<2.5) return 'Practitioner';
+  if(v<3.5) return 'Proficient';
+  if(v<4.5) return 'Builder';
+  return 'Leader';
+}
+const topicDefs=[
+{key:'learn',name:'Learn',vi:'Học hỏi',pair:'Con người × Công nghệ',color:'#39a866',desc:'Chất lượng kỹ năng AI, data literacy, lộ trình học tập và khả năng chia sẻ cách làm để tăng năng lực cá nhân.',examples:[['AI + Data','Kết hợp AI với Excel, SQL, Python hoặc Power BI trong công việc hằng ngày.'],['Reusable','Biến prompt, template và workflow thành tài sản có thể dùng lại.'],['Sharing','Chia sẻ cách làm, hướng dẫn hoặc best practice cho đồng nghiệp.']],qs:[
+['L1','Hiểu biết AI trong công việc','Bạn sử dụng AI trong công việc ở mức độ nào?',['Chưa dùng hoặc dùng rất ít.','Dùng cá nhân cho tìm kiếm, viết hoặc tác vụ đơn lẻ.','Dùng hằng tuần trong workflow rõ ràng, biết kiểm chứng kết quả.','AI trở thành phương thức làm việc thường xuyên; bạn chủ động đề xuất và chia sẻ use case mới.']],
+['L2','Năng lực Data + AI','Bạn kết hợp AI với kỹ năng dữ liệu như thế nào?',['Chưa kết hợp.','AI hỗ trợ công thức, DAX, SQL hoặc code đơn giản.','AI hỗ trợ phân tích, debug, dashboard và automation trong các dự án thực tế.','Bạn thiết kế reusable solution/agent kết nối dữ liệu và nghiệp vụ.']],
+['L3','Lộ trình phát triển năng lực','Việc học AI có gắn với nhu cầu công việc cụ thể không?',['Chưa có lộ trình.','Học rời rạc theo nhu cầu phát sinh.','Có roadmap kỹ năng gắn với use case ưu tiên và kết quả mong đợi.','Học qua dự án thực tế, đo tiến bộ và cập nhật roadmap định kỳ.']],
+['L4','Hợp tác và học từ cộng đồng','Khi gặp bài toán vượt khả năng hiện tại, bạn xử lý thế nào?',['Không có nguồn hỗ trợ rõ ràng.','Tìm tài liệu hoặc hỏi cộng đồng khi cần.','Có nhóm/đối tác/mentor hỗ trợ và chuyển giao kiến thức.','Bạn đồng phát triển giải pháp, đồng thời đóng góp ngược lại cho cộng đồng hoặc team.']],
+['L5','Chia sẻ kiến thức','Prompt, template và kinh nghiệm triển khai được lưu và chia sẻ ra sao?',['Không lưu có hệ thống.','Lưu riêng lẻ cho cá nhân.','Có thư viện prompt, template, code snippet hoặc guide dùng lại.','Có playbook/knowledge base được cập nhật và dùng như chuẩn làm việc.']]
+]},
+{key:'lead',name:'Lead',vi:'Dẫn dắt',pair:'Con người × Quy trình',color:'#d2a527',desc:'Mức độ bạn chủ động chọn use case, gắn AI với KPI, điều phối stakeholder và chứng minh giá trị kinh doanh.',examples:[['KPI','AI use case gắn với time saving, cost, OTD, shortage risk hoặc chất lượng quyết định.'],['Portfolio','Ưu tiên dự án theo impact × effort × data readiness.'],['Value','Đo trước/sau để chứng minh hiệu quả thay vì chỉ demo công nghệ.']],qs:[
+['D1','Quyền sở hữu sáng kiến','Ai chịu trách nhiệm đưa use case AI đến kết quả cuối?',['Chưa có owner rõ.','Bạn tự khởi xướng và tự duy trì từng use case.','Có stakeholder/manager đồng sở hữu mục tiêu và hỗ trợ triển khai.','Có sponsor rõ, roadmap và cơ chế mở rộng sang nhiều team/process.']],
+['D2','Liên kết với KPI kinh doanh','Use case AI có gắn với chỉ tiêu cụ thể không?',['Chưa gắn KPI.','Lợi ích mới ở mức định tính.','Mỗi use case có ít nhất một KPI định lượng: thời gian, chi phí, service, risk hoặc chất lượng.','KPI AI nằm trong kế hoạch cải tiến và được review định kỳ.']],
+['D3','Ưu tiên và phê duyệt','Bạn chọn use case AI theo cơ chế nào?',['Theo cảm hứng hoặc tool mới.','Theo nhu cầu phát sinh.','Theo impact × effort × data readiness, có business case đơn giản.','Quản lý như danh mục đầu tư: scale dự án tốt và dừng dự án kém hiệu quả.']],
+['D4','Mô hình phối hợp','Bạn phối hợp với Purchasing, SCM, IT, Data và stakeholder như thế nào?',['Làm độc lập.','Trao đổi khi cần dữ liệu hoặc hỗ trợ.','Có vai trò rõ, cadence review và feedback loop.','Có operating model chuẩn, RACI và mạng lưới champion ở nhiều nhóm.']],
+['D5','Đo lường giá trị','Bạn đo kết quả AI/automation như thế nào?',['Chưa đo.','Ghi nhận một số success case.','Đo readiness, adoption và business impact trước/sau.','Có báo cáo ROI/value định kỳ và dùng kết quả để quyết định đầu tư tiếp.']]
+]},
+{key:'access',name:'Access',vi:'Dữ liệu',pair:'Con người × Dữ liệu',color:'#77569a',desc:'Mức độ dữ liệu SAP, ODS, Excel, SharePoint và các nguồn khác được tích hợp, chuẩn hoá, truy vết và tái sử dụng.',examples:[['Integration','Giảm copy/paste bằng query, dataflow, SQL hoặc pipeline.'],['Master Data','Chuẩn hoá Material, Vendor, Plant, MPN và các mapping nghiệp vụ.'],['Lineage','Biết KPI đến từ đâu, cách tính gì và refresh khi nào.']],qs:[
+['A1','Tích hợp dữ liệu giữa các hệ thống','Dữ liệu từ SAP/ODS/Excel/SharePoint được tổng hợp thế nào?',['Rời rạc, copy/paste thủ công.','Có file tổng hợp hoặc query đơn giản.','Có data model/pipeline chuẩn dùng lại cho nhiều report.','Có semantic layer/API/metadata giúp nhiều solution dùng chung nguồn dữ liệu.']],
+['A2','Master data','Material, vendor, MPN, plant và group logic có nhất quán không?',['Không nhất quán, phải dò thủ công.','Có mapping file riêng.','Có rule chuẩn, owner và quy trình cập nhật.','Có kiểm tra tự động khi tạo/thay đổi master data và cảnh báo sai lệch.']],
+['A3','Chất lượng và trách nhiệm dữ liệu','Khi số liệu sai, bạn xác định nguyên nhân và owner ra sao?',['Phát hiện muộn khi report đã sai.','Sửa thủ công theo từng case.','Có data owner, rule validation và checklist chất lượng.','Có data quality KPI, alert và cơ chế xử lý root cause.']],
+['A4','Tìm kiếm và tái sử dụng','Bạn có thể tìm và dùng lại dataset, query, model hoặc logic cũ không?',['Mỗi project quản lý riêng.','Tìm lại từ folder/file cá nhân.','Có kho dùng chung cho query, model, template và documentation.','Có catalog/search giúp tìm, chia sẻ và đóng góp tài sản dữ liệu/AI.']],
+['A5','Chia sẻ dữ liệu với stakeholder','Dữ liệu/report được chia sẻ cho team hoặc đối tác ra sao?',['Gửi file thủ công qua email/chat.','Share file hoặc link dashboard.','Có dashboard/portal chuẩn và quyền truy cập phù hợp.','Trao đổi dữ liệu hai chiều tự động qua API/workflow khi phù hợp.']]
+]},
+{key:'scale',name:'Scale',vi:'Mở rộng',pair:'Dữ liệu × Công nghệ',color:'#5476a8',desc:'Mức độ solution được đưa từ file hoặc tool cá nhân thành nền tảng ổn định, có thể mở rộng cho nhiều dataset, plant hoặc team.',examples:[['Platform','Từ local file → shared/cloud/service.'],['Reuse','Config-driven thay vì copy code cho từng case.'],['Performance','Refresh ổn định, xử lý lỗi và theo dõi dung lượng.']],qs:[
+['S1','Nền tảng dữ liệu','Dữ liệu phục vụ phân tích đang được lưu trữ và quản lý ở đâu?',['Bảng tính/máy cá nhân.','Shared drive hoặc workspace dùng chung.','Cloud/data platform phục vụ nhiều dashboard và automation.','Nền tảng tích hợp hỗ trợ cả thử nghiệm lẫn vận hành AI ở quy mô lớn.']],
+['S2','Thu nạp dữ liệu','Dữ liệu được đưa vào hệ thống phân tích như thế nào?',['Upload/nhập liệu thủ công.','Script hoặc refresh theo lịch cho từng nguồn.','Pipeline theo lịch, có chuẩn ingest và xử lý lỗi.','Gần thời gian thực; thêm nguồn mới bằng cấu hình, ít phải viết lại code.']],
+['S3','Báo cáo và phân tích BI','Người dùng tiếp cận số liệu qua công cụ nào?',['Báo cáo tĩnh trên Excel.','Dashboard theo từng nhu cầu.','Dashboard self-service có data model và measure chuẩn.','Forecast, anomaly detection hoặc AI insight được tích hợp vào dashboard.']],
+['S4','Công cụ GenAI','Bạn sử dụng AI thông qua công cụ nào?',['Tài khoản/tool rời rạc, không có chuẩn.','Dùng tool cá nhân theo nhu cầu.','Dùng công cụ enterprise hoặc workspace có quản trị.','AI agent/API kết nối dữ liệu nội bộ và workflow chuyên biệt.']],
+['S5','Triển khai và vận hành solution','Automation/model được vận hành ở đâu?',['Chạy thủ công trên máy cá nhân.','Chạy script/macro theo lịch đơn giản.','Chạy trên service/cloud với logging và nhiều người dùng.','Nhiều solution chạy song song, có versioning, scaling và deployment chuẩn.']]
+]},
+{key:'secure',name:'Secure',vi:'Bảo mật',pair:'Dữ liệu × Quy trình',color:'#d4574f',desc:'Mức độ bạn kiểm soát quyền truy cập, dữ liệu nhạy cảm, GenAI và chất lượng đầu ra trước khi dùng trong công việc.',examples:[['Access','Role-based access và least privilege.'],['GenAI','Không đưa dữ liệu nội bộ vào tool không phù hợp.'],['Review','Kết quả AI có human review, source check và traceability.']],qs:[
+['C1','Kiểm soát truy cập','Quyền truy cập dashboard, file và data source được cấp thế nào?',['Chia sẻ rộng hoặc không rõ quyền.','Phân quyền thủ công theo từng file/report.','Phân quyền theo vai trò, chỉ cấp quyền cần thiết.','Có audit, review quyền định kỳ và cảnh báo bất thường.']],
+['C2','Chính sách sử dụng GenAI','Bạn có nguyên tắc rõ dữ liệu nào được đưa vào công cụ AI nào không?',['Chưa có nguyên tắc.','Tự đánh giá theo từng case.','Có nguyên tắc rõ và ưu tiên tool enterprise/approved.','Có policy, DLP/approved tools và đào tạo định kỳ.']],
+['C3','Dữ liệu cá nhân và nhạy cảm','Dữ liệu nhạy cảm được quản lý ra sao?',['Chưa phân loại.','Biết một số dữ liệu cần tránh nhưng chưa chuẩn hoá.','Có phân loại, masking/encryption hoặc rule xử lý phù hợp.','Có review rủi ro định kỳ, audit trail và quy trình xử lý sự cố.']],
+['C4','Kiểm duyệt kết quả AI','Đầu ra AI có được kiểm tra trước khi dùng không?',['Dùng trực tiếp.','Kiểm tra khi thấy bất thường.','Có checklist kiểm chứng source, logic, code hoặc số liệu quan trọng.','Có approval gate theo risk level và kiểm thử có hệ thống.']],
+['C5','Truy vết nguồn gốc số liệu','Có xác định được nguồn và cách tính KPI/report không?',['Chưa truy vết được.','Có ghi chú thủ công ở một số report.','Có source, business rule, refresh time và owner rõ.','Có lineage đầy đủ, version history và change log.']]
+]},
+{key:'automate',name:'Automate',vi:'Tự động hóa',pair:'Công nghệ × Quy trình',color:'#9b764d',desc:'Khả năng tự động hoá báo cáo, phân tích, purchasing workflow và monitoring để giảm thao tác tay, tập trung vào exception.',examples:[['Recurring','Báo cáo định kỳ chạy tự động và có cảnh báo.'],['Predictive','Forecast, ETA, shortage hoặc risk scoring chạy định kỳ.'],['Workflow','Automation xử lý end-to-end, con người tập trung exception/approval.']],qs:[
+['U1','Báo cáo định kỳ','Báo cáo tuần/tháng được lập như thế nào?',['Lập thủ công mỗi kỳ.','Macro/query giảm một phần thao tác.','Tự động theo lịch, có refresh và cảnh báo khi lỗi.','AI soạn insight/commentary; người phụ trách duyệt trước khi phát hành.']],
+['U2','Dự báo và phân tích dự đoán','Bạn lập forecast/risk/ETA bằng phương pháp nào?',['Dựa trên kinh nghiệm hoặc công thức đơn giản.','Rule-based hoặc model thủ công cho từng case.','Model/scoring chạy định kỳ và có theo dõi accuracy cơ bản.','Model được tái huấn luyện/điều chỉnh theo dữ liệu mới và theo dõi drift/accuracy.']],
+['U3','Tự động hóa quy trình nghiệp vụ','Purchasing/SCM workflow được tự động hoá ở mức nào?',['Phần lớn thao tác thủ công.','Macro/script hỗ trợ từng bước.','Phần lớn end-to-end; chỉ xử lý thủ công exception.','AI phân tích workflow và đề xuất/triển khai next action với approval phù hợp.']],
+['U4','GenAI trong quy trình làm việc','GenAI đã được tích hợp vào workflow chuẩn chưa?',['Sử dụng rời rạc, chủ yếu hỏi đáp/soạn email.','Có prompt/template cho một số tác vụ.','Tích hợp vào chuẩn làm việc: phân tích, draft, summary, coding, documentation.','AI agent thực hiện các bước lặp lại; con người phê duyệt kết quả cuối.']],
+['U5','Giám sát và vận hành','Khi pipeline, automation hoặc model gặp lỗi, bạn phát hiện thế nào?',['Khi user báo hoặc kiểm tra muộn.','Kiểm tra thủ công theo lịch.','Có log, monitoring và thông báo lỗi.','Có retry, alert, versioned deployment, test và quy trình rollback/CI-CD phù hợp.']]
+]}
+];
+const state={scores:{},notes:{},targets:{}};
+function stageOf(v){
+ if(v==null||Number.isNaN(v))return 'Chưa chấm';
+ if(v<1.5)return 'LEVEL 1 · Beginner – Learn AI';
+ if(v<2.5)return 'LEVEL 2 · Practitioner – Use AI';
+ if(v<3.5)return 'LEVEL 3 · Proficient – Integrate AI';
+ if(v<4.5)return 'LEVEL 4 · Builder – Automate with AI';
+ return 'LEVEL 5 · Leader – Transform with AI'
+}
+function avg(arr){const a=arr.filter(v=>v!=null&&!Number.isNaN(v));return a.length?a.reduce((s,v)=>s+v,0)/a.length:null}
+function build(){
+ const host=document.getElementById('topics');host.innerHTML='';
+ topicDefs.forEach(t=>{
+  state.targets[t.key]=state.targets[t.key]??3;
+  const sec=document.createElement('section');sec.className='topic';sec.style.setProperty('--accent',t.color);
+  sec.innerHTML=`<div class="topic-head"><div><div class="topic-title"><h2>${t.name}</h2><span class="vi">${t.vi}</span></div><div class="topic-kicker">${t.pair}</div><p class="topic-desc">${t.desc}</p></div><div class="topic-side"><div class="topic-score"><span id="topicScore_${t.key}">–</span><br><span id="topicStage_${t.key}">Chưa chấm</span></div><div class="target-row"><span>Mục tiêu</span><select id="target_${t.key}" onchange="setTarget('${t.key}',this.value)">${[1,2,3,4,5].map(i=>`<option value="${i}" ${i===3?'selected':''}>${i} · ${stages[i]}</option>`).join('')}</select></div></div></div><div class="insight-cards">${t.examples.map((e,i)=>`<div class="insight-card"><b>${e[0]}</b><p>${e[1]}</p><small>Ví dụ bằng chứng cá nhân</small></div>`).join('')}</div><div class="criteria">${t.qs.map(q=>renderCriterion(t,q)).join('')}</div>`;
+  host.appendChild(sec);
+ });
+ buildOverview();loadLocal();update();
+}
+function renderCriterion(t,q){const [code,title,question,opts]=q;const id=`${t.key}_${code}`;return `<div class="criterion"><h3><span class="code">${code}</span>${title}</h3><div class="question">${question}</div><div class="choices">${[1,2,3,4,5].map(i=>{const txt=levelOptionText(t.key,opts,i);return `<button type="button" class="choice" data-id="${id}" data-score="${i}" onclick="pick('${id}',${i},this,'${t.color}')"><span class="ch-label">LEVEL ${i} · ${levelNames[i]}</span><span class="ch-text"><b>${stages[i]}</b><br>${txt}</span></button>`}).join('')}</div><button class="evidence-toggle" type="button" onclick="toggleEvidence('${id}',this)">▸ Ghi chú bằng chứng</button><div class="evidence" id="ev_${id}"><textarea id="note_${id}" placeholder="Ví dụ: dashboard, report, workflow, project, KPI, số giờ tiết kiệm..." oninput="setNote('${id}',this.value)"></textarea></div></div>`}
+function pick(id,score,el,color){state.scores[id]=score;document.querySelectorAll(`[data-id="${id}"]`).forEach(x=>x.classList.remove('selected'));el.classList.add('selected');el.style.setProperty('--accent',color);saveLocal(true);update()}
+function setNote(id,v){state.notes[id]=v;saveLocal(true)}
+function toggleEvidence(id,btn){const e=document.getElementById('ev_'+id);e.classList.toggle('open');btn.textContent=(e.classList.contains('open')?'▾':'▸')+' Ghi chú bằng chứng'}
+function setTarget(k,v){state.targets[k]=Number(v);saveLocal(true);update()}
+function valuesFor(t){return t.qs.map(q=>state.scores[`${t.key}_${q[0]}`]).filter(v=>v!=null)}
+function topicAvg(t){return avg(valuesFor(t))}
+function buildOverview(){document.getElementById('overviewScores').innerHTML=topicDefs.map(t=>`<div><span style="color:${t.color}">${t.name}</span><span class="score" id="ov_${t.key}">–</span></div>`).join('')}
+function recommendation(k,v){const r={learn:'Chuẩn hoá prompt/playbook, xây lộ trình kỹ năng và chia sẻ workflow dùng lại.',lead:'Gắn use case với KPI, owner, business case và cadence review.',access:'Chuẩn hoá data model, master data, data quality và lineage.',scale:'Chuyển solution từ file/tool cá nhân sang kiến trúc cấu hình được, có monitoring.',secure:'Nâng governance: dữ liệu nhạy cảm, role-based access, human review và traceability.',automate:'Mở rộng automation end-to-end, predictive analytics và exception-based workflow.'};return (v>=2.5?'Duy trì và đóng gói thành chuẩn có thể nhân rộng. ':v>=1.75?'Tập trung đưa từ Strategic lên reusable/platform level. ':v>=1?'Cần chuẩn hoá cách làm trước khi scale. ':'Ưu tiên xây nền tảng và bằng chứng thực tế. ')+r[k]}
+function update(){
+ const answered=Object.keys(state.scores).length,total=30;document.getElementById('progressText').textContent=`${answered}/${total} tiêu chí đã chấm`;document.getElementById('progressBar').style.width=(answered/total*100)+'%';
+ const rows=[];topicDefs.forEach(t=>{const a=topicAvg(t),n=valuesFor(t).length,target=Number(state.targets[t.key]??3),gap=a==null?null:Math.max(0,target-a);document.getElementById('topicScore_'+t.key).textContent=a==null?'–':a.toFixed(2);document.getElementById('topicStage_'+t.key).textContent=stageOf(a);document.getElementById('ov_'+t.key).textContent=a==null?'–':a.toFixed(2);const sel=document.getElementById('target_'+t.key);if(sel)sel.value=target;rows.push({t,a,n,target,gap})});
+ document.getElementById('scoreBody').innerHTML=rows.map(x=>`<tr><td style="font-weight:800;color:${x.t.color}">${x.t.name}</td><td>${x.t.pair}</td><td>${x.n}/5</td><td class="num">${x.a==null?'–':x.a.toFixed(2)}</td><td>${stageOf(x.a)}</td><td class="num">${x.target.toFixed(0)}</td><td class="num">${x.gap==null?'–':x.gap.toFixed(2)}</td></tr>`).join('');
+ const overall=avg(rows.map(x=>x.a));document.getElementById('overallScore').textContent=overall==null?'–':overall.toFixed(2);document.getElementById('overallStage').textContent=stageOf(overall);
+ document.getElementById('gapList').innerHTML=rows.map(x=>`<div class="gap-row"><b style="color:${x.t.color}">${x.t.name}</b><div class="gapbar"><div class="current" style="width:${(x.a??0)/5*100}%"></div><i class="target" style="left:${x.target/5*100}%"></i></div><em>${x.a==null?'–':x.a.toFixed(1)}</em></div>`).join('');
+ const ranked=rows.filter(x=>x.a!=null).sort((a,b)=>(b.gap-a.gap)||(a.a-b.a));document.getElementById('priorityList').innerHTML=ranked.length?ranked.map((x,i)=>`<div class="priority-item"><div class="rank">${i+1}</div><div class="topic-name" style="color:${x.t.color}">${x.t.name}</div><div class="rec">${recommendation(x.t.key,x.a)}</div><div class="gap">Gap ${x.gap.toFixed(2)}</div></div>`).join(''):'<div style="color:#73777c">Chưa có điểm. Hoàn thành ít nhất một chủ đề để xem thứ tự ưu tiên.</div>';
+ drawRadar(rows);saveLocal(true)
+}
+function drawRadar(rows){const c=document.getElementById('radar'),ctx=c.getContext('2d'),w=c.width,h=c.height,cx=w/2,cy=h/2+5,R=125,N=6;ctx.clearRect(0,0,w,h);ctx.font='13px Segoe UI, Arial';ctx.textAlign='center';ctx.textBaseline='middle';
+ for(let level=1;level<=5;level++){ctx.beginPath();for(let i=0;i<N;i++){const a=-Math.PI/2+i*2*Math.PI/N,r=R*level/5,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.closePath();ctx.strokeStyle='#dddddb';ctx.stroke()}
+ rows.forEach((x,i)=>{const a=-Math.PI/2+i*2*Math.PI/N;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);ctx.strokeStyle='#e5e5e3';ctx.stroke();ctx.fillStyle=x.t.color;ctx.fillText(x.t.name,cx+Math.cos(a)*(R+28),cy+Math.sin(a)*(R+25))});
+ function poly(vals,stroke,fill){ctx.beginPath();vals.forEach((v,i)=>{const a=-Math.PI/2+i*2*Math.PI/N,r=R*(v||0)/5,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.closePath();ctx.fillStyle=fill;ctx.fill();ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke()}
+ poly(rows.map(x=>x.target),'#a5a7aa','rgba(170,172,175,.10)');poly(rows.map(x=>x.a??0),'#4b4e52','rgba(75,78,82,.12)');ctx.lineWidth=1;
+ ctx.fillStyle='#5c6065';ctx.textAlign='left';ctx.fillText('Hiện trạng',22,h-28);ctx.fillStyle='#a5a7aa';ctx.fillText('Mục tiêu',120,h-28)}
+function syncIdentity(){document.getElementById('personDisplay').textContent=document.getElementById('personName').value||'—';document.getElementById('roleDisplay').textContent=document.getElementById('personRole').value||'—';saveLocal(true)}
+function snapshot(){return {version:3,name:document.getElementById('personName').value,role:document.getElementById('personRole').value,scores:state.scores,notes:state.notes,targets:state.targets,updated:new Date().toISOString()}}
+function saveLocal(silent=false){localStorage.setItem('tin_personal_ai_maturity_v3',JSON.stringify(snapshot()));if(!silent)alert('Đã lưu đánh giá trên trình duyệt này.')}
+function loadLocal(){const raw=localStorage.getItem('tin_personal_ai_maturity_v3');if(!raw)return;try{const x=JSON.parse(raw);if(x.name)document.getElementById('personName').value=x.name;if(x.role)document.getElementById('personRole').value=x.role;Object.assign(state.scores,x.scores||{});Object.assign(state.notes,x.notes||{});Object.assign(state.targets,x.targets||{});syncIdentity();Object.entries(state.scores).forEach(([id,s])=>{const b=document.querySelector(`[data-id="${id}"][data-score="${s}"]`);if(b)b.classList.add('selected')});Object.entries(state.notes).forEach(([id,v])=>{const ta=document.getElementById('note_'+id);if(ta)ta.value=v});topicDefs.forEach(t=>{const s=document.getElementById('target_'+t.key);if(s)s.value=state.targets[t.key]??3})}catch(e){console.warn(e)}}
+function resetAll(){if(!confirm('Xóa toàn bộ điểm, mục tiêu và ghi chú?'))return;localStorage.removeItem('tin_personal_ai_maturity_v3');location.reload()}
+function exportCSV(){const lines=[['Topic','Criterion','Title','Score','Stage','Target','Evidence']];topicDefs.forEach(t=>t.qs.forEach(q=>{const id=`${t.key}_${q[0]}`,s=state.scores[id];lines.push([t.name,q[0],q[1],s??'',s==null?'':stages[s],state.targets[t.key]??3,(state.notes[id]||'').replace(/\n/g,' ')])}));const csv=lines.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');downloadBlob(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),'Tin_Vo_AI_Maturity_Assessment.csv')}
+function exportHTML(){saveLocal(true);const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;downloadBlob(new Blob([html],{type:'text/html;charset=utf-8'}),'Tin_Vo_AI_Maturity_Assessment_Report.html')}
+function downloadBlob(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
+function downloadPNG(){const rows=topicDefs.map(t=>({t,a:topicAvg(t),target:Number(state.targets[t.key]??3)})),overall=avg(rows.map(x=>x.a));if(overall==null){alert('Hãy chấm ít nhất một tiêu chí trước khi tải PNG.');return}const W=1600,H=1050,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,W,H);x.fillStyle='#292c30';x.font='800 54px Segoe UI, Arial';x.fillText('Personal AI Competency Assessment',90,95);x.font='24px Segoe UI, Arial';x.fillStyle='#6b6f74';x.fillText((document.getElementById('personName').value||'')+'  •  '+(document.getElementById('personRole').value||''),90,140);x.strokeStyle='#dfdfdd';x.beginPath();x.moveTo(90,172);x.lineTo(1510,172);x.stroke();
+ x.fillStyle='#303338';x.font='800 82px Segoe UI, Arial';x.fillText(overall.toFixed(2),90,285);x.font='20px Segoe UI, Arial';x.fillStyle='#73777c';x.fillText('/ 5.00',245,282);x.font='700 27px Segoe UI, Arial';x.fillStyle='#303338';x.fillText(stageOf(overall),90,330);x.font='18px Segoe UI, Arial';x.fillStyle='#777b80';x.fillText('Current maturity',90,365);
+ x.font='700 23px Segoe UI, Arial';x.fillStyle='#303338';x.fillText('Dimension scores',90,440);let yy=490;rows.forEach(r=>{x.fillStyle=r.t.color;x.font='700 20px Segoe UI, Arial';x.fillText(r.t.name,90,yy);x.fillStyle='#efefed';roundRect(x,250,yy-17,720,18,9,true);x.fillStyle=r.t.color;roundRect(x,250,yy-17,720*((r.a??0)/5),18,9,true);x.fillStyle='#52565b';x.font='19px Segoe UI, Arial';x.fillText(r.a==null?'–':r.a.toFixed(2),1000,yy);x.fillStyle='#8a8d91';x.font='15px Segoe UI, Arial';x.fillText('Target '+r.target,1080,yy);yy+=68});
+ const ranked=rows.filter(r=>r.a!=null).sort((a,b)=>(b.target-b.a)-(a.target-a.a)).slice(0,3);x.fillStyle='#303338';x.font='700 23px Segoe UI, Arial';x.fillText('Top priorities',1160,440);yy=490;ranked.forEach((r,i)=>{x.fillStyle='#f2f2f0';x.beginPath();x.arc(1180,yy-6,22,0,Math.PI*2);x.fill();x.fillStyle='#33363a';x.font='700 17px Segoe UI, Arial';x.textAlign='center';x.fillText(String(i+1),1180,yy);x.textAlign='left';x.fillStyle=r.t.color;x.font='700 20px Segoe UI, Arial';x.fillText(r.t.name,1220,yy);x.fillStyle='#666a70';x.font='15px Segoe UI, Arial';wrap(x,recommendation(r.t.key,r.a),1220,yy+28,275,22);yy+=140});x.fillStyle='#8a8d91';x.font='15px Segoe UI, Arial';x.fillText('Generated '+new Date().toLocaleString('vi-VN'),90,H-55);c.toBlob(b=>downloadBlob(b,'Tin_Vo_AI_Maturity_Result.png'),'image/png')}
+function roundRect(ctx,x,y,w,h,r,fill){ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(fill)ctx.fill()}
+function wrap(ctx,text,x,y,maxW,lineH){const words=text.split(' ');let line='';for(const word of words){const test=line+word+' ';if(ctx.measureText(test).width>maxW&&line){ctx.fillText(line,x,y);line=word+' ';y+=lineH}else line=test}ctx.fillText(line,x,y)}
+build();
+</script>
+</body>
+</html>
