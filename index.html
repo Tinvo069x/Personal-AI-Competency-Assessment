@@ -59,21 +59,21 @@ button{cursor:pointer}
 <body>
 <div class="container">
   <div class="toolbar">
-    <div class="segment"><button class="active" type="button">Tiếng Việt</button><button type="button" onclick="alert('Bản này đang tối ưu nội dung tiếng Việt. Có thể bổ sung bản English ở phiên bản tiếp theo.')">English</button></div>
+    <div class="segment"><button id="langVi" class="active" type="button" onclick="setLanguage('vi')">Tiếng Việt</button><button id="langEn" type="button" onclick="setLanguage('en')">English</button></div>
     <div class="tool-actions">
-      <button class="btn" onclick="exportHTML()">Xuất báo cáo (HTML)</button>
-      <button class="btn" onclick="exportCSV()">Xuất dữ liệu (CSV)</button>
-      <button class="btn primary" onclick="downloadPNG()">Tải kết quả (PNG)</button>
-      <button class="btn danger" onclick="resetAll()">Xóa điểm</button>
+      <button id="exportHtmlBtn" class="btn" onclick="exportHTML()">Xuất báo cáo (HTML)</button>
+      <button id="exportCsvBtn" class="btn" onclick="exportCSV()">Xuất dữ liệu (CSV)</button>
+      <button id="pngTopBtn" class="btn primary" onclick="downloadPNG()">Tải kết quả (PNG)</button>
+      <button id="resetBtn" class="btn danger" onclick="resetAll()">Xóa điểm</button>
     </div>
   </div>
 
   <header class="hero">
     <h1>Personal AI Competency Assessment</h1>
-    <p class="lead">Công cụ tự đánh giá được cá nhân hoá cho công việc Digital Purchasing, Supply Chain Analytics, Data và Automation — giúp xác định vị trí hiện tại trên lộ trình ứng dụng AI, nhận diện khoảng trống năng lực và sắp xếp thứ tự ưu tiên phát triển.</p>
+    <p id="heroLead" class="lead">Công cụ tự đánh giá được cá nhân hoá cho công việc Digital Purchasing, Supply Chain Analytics, Data và Automation — giúp xác định vị trí hiện tại trên lộ trình ứng dụng AI, nhận diện khoảng trống năng lực và sắp xếp thứ tự ưu tiên phát triển.</p>
     <div class="author-card">
       <div>
-        <small>Personal edition</small>
+        <small id="personalEdition">Personal edition</small>
         <strong id="personDisplay">Tin Vo Quoc</strong>
         <div class="author-meta" id="roleDisplay">Digital | Supply Chain Analytics</div>
       </div>
@@ -85,32 +85,32 @@ button{cursor:pointer}
   </header>
 
   <section class="section">
-    <h2>Kết quả sau khi hoàn thành đánh giá</h2>
+    <h2 id="outcomesTitle">Kết quả sau khi hoàn thành đánh giá</h2>
     <ul class="bullets">
-      <li>Điểm cho 6 chủ đề và mức độ trưởng thành tương ứng theo 5 cấp độ: Beginner, Practitioner, Proficient, Builder và Leader.</li>
-      <li>Biểu đồ so sánh hiện trạng với mục tiêu bạn tự xác định cho từng chủ đề.</li>
-      <li>Danh sách ưu tiên cải thiện, kèm khuyến nghị gắn với công việc Data, Purchasing và Automation.</li>
-      <li>Có thể lưu trực tiếp trên trình duyệt, xuất CSV, HTML và ảnh PNG làm mốc so sánh.</li>
+      <li id="outcome1">Điểm cho 6 chủ đề và mức độ trưởng thành tương ứng theo 5 cấp độ: Beginner, Practitioner, Proficient, Builder và Leader.</li>
+      <li id="outcome2">Biểu đồ so sánh hiện trạng với mục tiêu bạn tự xác định cho từng chủ đề.</li>
+      <li id="outcome3">Danh sách ưu tiên cải thiện, kèm khuyến nghị gắn với công việc Data, Purchasing và Automation.</li>
+      <li id="outcome4">Có thể lưu trực tiếp trên trình duyệt, xuất CSV, HTML và ảnh PNG làm mốc so sánh.</li>
     </ul>
   </section>
 
   <section class="section">
-    <h2>Bốn khía cạnh được đánh giá</h2>
-    <p class="section-intro">Sáu chủ đề đánh giá nằm tại giao điểm của bốn khía cạnh nền tảng. Phiên bản cá nhân giữ cấu trúc Learn, Lead, Access, Scale, Secure và Automate, nhưng câu hỏi được điều chỉnh sát với workflow dữ liệu và chuỗi cung ứng.</p>
+    <h2 id="aspectsTitle">Bốn khía cạnh được đánh giá</h2>
+    <p id="aspectsIntro" class="section-intro">Sáu chủ đề đánh giá nằm tại giao điểm của bốn khía cạnh nền tảng. Phiên bản cá nhân giữ cấu trúc Learn, Lead, Access, Scale, Secure và Automate, nhưng câu hỏi được điều chỉnh sát với workflow dữ liệu và chuỗi cung ứng.</p>
     <div class="aspect-grid">
-      <div class="aspect"><h3>Con người</h3><p>Kỹ năng AI, data literacy, khả năng chuyển kiến thức thành cách làm ổn định và chia sẻ được.</p><div class="rel">Chủ đề liên quan: Learn, Lead, Access</div></div>
-      <div class="aspect"><h3>Quy trình</h3><p>Cách ưu tiên use case, đo lường giá trị, kiểm soát rủi ro và tự động hoá công việc.</p><div class="rel">Chủ đề liên quan: Lead, Secure, Automate</div></div>
-      <div class="aspect"><h3>Công nghệ</h3><p>Công cụ AI, BI, automation, data platform và khả năng mở rộng giải pháp.</p><div class="rel">Chủ đề liên quan: Learn, Scale, Automate</div></div>
-      <div class="aspect"><h3>Dữ liệu</h3><p>Chất lượng, tính thống nhất, khả năng truy cập, tái sử dụng, truy vết và bảo mật dữ liệu.</p><div class="rel">Chủ đề liên quan: Access, Scale, Secure</div></div>
+      <div class="aspect"><h3 id="peopleTitle">Con người</h3><p id="peopleDesc">Kỹ năng AI, data literacy, khả năng chuyển kiến thức thành cách làm ổn định và chia sẻ được.</p><div id="peopleRel" class="rel">Chủ đề liên quan: Learn, Lead, Access</div></div>
+      <div class="aspect"><h3 id="processTitle">Quy trình</h3><p id="processDesc">Cách ưu tiên use case, đo lường giá trị, kiểm soát rủi ro và tự động hoá công việc.</p><div id="processRel" class="rel">Chủ đề liên quan: Lead, Secure, Automate</div></div>
+      <div class="aspect"><h3 id="techTitle">Công nghệ</h3><p id="techDesc">Công cụ AI, BI, automation, data platform và khả năng mở rộng giải pháp.</p><div id="techRel" class="rel">Chủ đề liên quan: Learn, Scale, Automate</div></div>
+      <div class="aspect"><h3 id="dataTitle">Dữ liệu</h3><p id="dataDesc">Chất lượng, tính thống nhất, khả năng truy cập, tái sử dụng, truy vết và bảo mật dữ liệu.</p><div id="dataRel" class="rel">Chủ đề liên quan: Access, Scale, Secure</div></div>
     </div>
   </section>
 
   <section class="overview">
-    <h2>Tổng quan</h2>
-    <div class="hint">Mỗi cạnh nối hai khía cạnh. Điểm chủ đề càng cao, mức độ trưởng thành càng lớn.</div>
+    <h2 id="overviewTitle">Tổng quan</h2>
+    <div id="overviewHint" class="hint">Mỗi cạnh nối hai khía cạnh. Điểm chủ đề càng cao, mức độ trưởng thành càng lớn.</div>
     <div class="overview-grid">
       <div class="framework">
-        <div class="axis people">Con người</div><div class="axis process">Quy trình</div><div class="axis tech">Công nghệ</div><div class="axis data">Dữ liệu</div>
+        <div id="axisPeople" class="axis people">Con người</div><div id="axisProcess" class="axis process">Quy trình</div><div id="axisTech" class="axis tech">Công nghệ</div><div id="axisData" class="axis data">Dữ liệu</div>
         <div class="diamond"></div>
         <div class="topic-dot t-learn">Learn</div><div class="topic-dot t-lead">Lead</div><div class="topic-dot t-access">Access</div><div class="topic-dot t-scale">Scale</div><div class="topic-dot t-secure">Secure</div><div class="topic-dot t-automate">Automate</div>
       </div>
@@ -122,10 +122,10 @@ button{cursor:pointer}
   </section>
 
   <section class="guide">
-    <h2>Hướng dẫn chấm điểm</h2>
-    <p>Mỗi chủ đề gồm 5 tiêu chí. Với từng tiêu chí, chọn mô tả phản ánh đúng hiện trạng của bạn, không dựa trên kế hoạch tương lai. Nếu đang ở giữa hai mức, chọn mức thấp hơn.</p>
-    <p>Ghi lại căn cứ cho từng lựa chọn — ví dụ dashboard, workflow, tool, report, số giờ tiết kiệm, KPI hoặc link project — tại mục “Ghi chú bằng chứng” để làm mốc cho lần đánh giá sau.</p>
-    <div class="scale-guide">
+    <h2 id="guideTitle">Hướng dẫn chấm điểm</h2>
+    <p id="guideP1">Mỗi chủ đề gồm 5 tiêu chí. Với từng tiêu chí, chọn mô tả phản ánh đúng hiện trạng của bạn, không dựa trên kế hoạch tương lai. Nếu đang ở giữa hai mức, chọn mức thấp hơn.</p>
+    <p id="guideP2">Ghi lại căn cứ cho từng lựa chọn — ví dụ dashboard, workflow, tool, report, số giờ tiết kiệm, KPI hoặc link project — tại mục “Ghi chú bằng chứng” để làm mốc cho lần đánh giá sau.</p>
+    <div id="scaleGuide" class="scale-guide">
       <div class="g"><strong>LEVEL 1 · Cơ bản</strong><span><b>Beginner – Learn AI</b><br>Biết sử dụng AI để hỏi đáp, tìm kiếm thông tin, dịch thuật và xử lý các tác vụ đơn giản.</span></div>
       <div class="g"><strong>LEVEL 2 · Ứng dụng</strong><span><b>Practitioner – Use AI</b><br>Sử dụng AI thường xuyên trong công việc; biết viết prompt có cấu trúc, xử lý email, tài liệu, Excel và nội dung.</span></div>
       <div class="g"><strong>LEVEL 3 · Tích hợp</strong><span><b>Proficient – Integrate AI</b><br>Kết hợp AI với phân tích dữ liệu, Power BI, SQL, Python, Supply Chain và hỗ trợ ra quyết định.</span></div>
@@ -137,29 +137,35 @@ button{cursor:pointer}
   <main id="topics"></main>
 
   <section class="results" id="results">
-    <h2>Kết quả</h2>
-    <p class="rule-note">Thang điểm 1–5: LEVEL 1 = Beginner – Learn AI; LEVEL 2 = Practitioner – Use AI; LEVEL 3 = Proficient – Integrate AI; LEVEL 4 = Builder – Automate with AI; LEVEL 5 = Leader – Transform with AI. Điểm chủ đề là trung bình 5 tiêu chí đã chấm; điểm tổng là trung bình của 6 chủ đề.</p>
+    <h2 id="resultsTitle">Kết quả</h2>
+    <p id="ruleNote" class="rule-note">Thang điểm 1–5: LEVEL 1 = Beginner – Learn AI; LEVEL 2 = Practitioner – Use AI; LEVEL 3 = Proficient – Integrate AI; LEVEL 4 = Builder – Automate with AI; LEVEL 5 = Leader – Transform with AI. Điểm chủ đề là trung bình 5 tiêu chí đã chấm; điểm tổng là trung bình của 6 chủ đề.</p>
     <div class="result-grid">
-      <div class="result-card"><h3>Hiện trạng và mục tiêu</h3><div class="canvas-wrap"><canvas id="radar" width="520" height="360"></canvas></div></div>
-      <div class="result-card"><h3>Khoảng cách theo chủ đề</h3><div id="gapList" class="gap-list"></div></div>
+      <div class="result-card"><h3 id="currentTargetTitle">Hiện trạng và mục tiêu</h3><div class="canvas-wrap"><canvas id="radar" width="520" height="360"></canvas></div></div>
+      <div class="result-card"><h3 id="gapTitle">Khoảng cách theo chủ đề</h3><div id="gapList" class="gap-list"></div></div>
     </div>
     <table class="score-table">
-      <thead><tr><th>Chủ đề</th><th>Khía cạnh</th><th>Đã chấm</th><th>Điểm</th><th>Giai đoạn</th><th>Mục tiêu</th><th>Khoảng cách</th></tr></thead>
-      <tbody id="scoreBody"></tbody><tfoot><tr><td colspan="3">Tổng</td><td class="num" id="overallScore">–</td><td id="overallStage">–</td><td></td><td></td></tr></tfoot>
+      <thead id="scoreHead"><tr><th>Chủ đề</th><th>Khía cạnh</th><th>Đã chấm</th><th>Điểm</th><th>Giai đoạn</th><th>Mục tiêu</th><th>Khoảng cách</th></tr></thead>
+      <tbody id="scoreBody"></tbody><tfoot><tr><td id="totalLabel" colspan="3">Tổng</td><td class="num" id="overallScore">–</td><td id="overallStage">–</td><td></td><td></td></tr></tfoot>
     </table>
-    <div class="priority"><h3>Ưu tiên cải thiện</h3><div id="priorityList" class="priority-list"></div></div>
-    <div class="export-bar"><button class="btn" onclick="saveLocal()">Lưu đánh giá</button><button class="btn primary" onclick="downloadPNG()">Tải PNG kết quả</button><button class="btn" onclick="window.print()">In / Save PDF</button></div>
+    <div class="priority"><h3 id="priorityTitle">Ưu tiên cải thiện</h3><div id="priorityList" class="priority-list"></div></div>
+    <div class="export-bar"><button id="saveBtn" class="btn" onclick="saveLocal()">Lưu đánh giá</button><button id="pngBottomBtn" class="btn primary" onclick="downloadPNG()">Tải PNG kết quả</button><button id="printBtn" class="btn" onclick="window.print()">In / Save PDF</button></div>
   </section>
 
   <footer class="footer">
     <strong>Personal AI Competency Assessment — adapted for Tin Vo Quoc</strong>
-    <div class="sources">Cấu trúc 6 chủ đề được giữ lại, trong khi thang trưởng thành được tùy biến thành 5 mức từ Beginner → Practitioner → Proficient → Builder → Leader. Nội dung câu hỏi đã được cá nhân hoá cho Data, Digital Purchasing, Supply Chain và Automation.</div>
+    <div id="footerSource" class="sources">Cấu trúc 6 chủ đề được giữ lại, trong khi thang trưởng thành được tùy biến thành 5 mức từ Beginner → Practitioner → Proficient → Builder → Leader. Nội dung câu hỏi đã được cá nhân hoá cho Data, Digital Purchasing, Supply Chain và Automation.</div>
   </footer>
 </div>
 <script>
-const stages=['','Beginner – Learn AI','Practitioner – Use AI','Proficient – Integrate AI','Builder – Automate with AI','Leader – Transform with AI'];
-const levelNames=['','Cơ bản','Ứng dụng','Tích hợp','Tự động hóa','Dẫn dắt'];
-const leaderTexts={
+
+let currentLang = localStorage.getItem('tin_ai_competency_lang') || 'vi';
+
+const stagesVI=['','Beginner – Learn AI','Practitioner – Use AI','Proficient – Integrate AI','Builder – Automate with AI','Leader – Transform with AI'];
+const stagesEN=['','Beginner – Learn AI','Practitioner – Use AI','Proficient – Integrate AI','Builder – Automate with AI','Leader – Transform with AI'];
+const levelNamesVI=['','Cơ bản','Ứng dụng','Tích hợp','Tự động hóa','Dẫn dắt'];
+const levelNamesEN=['','Foundation','Application','Integration','Automation','Leadership'];
+
+const leaderTextsVI={
  learn:'Chuẩn hóa năng lực AI thành cách làm dùng chung, hướng dẫn team và chủ động dẫn dắt các use case AI mới.',
  lead:'Thiết kế roadmap/portfolio AI, gắn với KPI và governance, đồng thời dẫn dắt nhiều stakeholder cùng triển khai.',
  access:'Thiết lập chuẩn dữ liệu, ownership, lineage và cách tái sử dụng dữ liệu để nhiều team có thể áp dụng nhất quán.',
@@ -167,19 +173,119 @@ const leaderTexts={
  secure:'Thiết lập governance, policy, audit và human oversight để AI được sử dụng an toàn và có trách nhiệm ở quy mô rộng.',
  automate:'Thiết kế AI Agent hoặc automation end-to-end, chuẩn hóa cách vận hành và dẫn dắt AI transformation cho team/process.'
 };
+const leaderTextsEN={
+ learn:'Standardize AI capability into shared ways of working, coach the team, and proactively lead new AI use cases.',
+ lead:'Design an AI roadmap and portfolio linked to KPIs and governance, while leading multiple stakeholders through delivery.',
+ access:'Establish data standards, ownership, lineage and reuse so multiple teams can work consistently.',
+ scale:'Design scalable platforms and operating models with clear deployment and monitoring standards.',
+ secure:'Establish governance, policy, audit and human oversight so AI can be used safely and responsibly at scale.',
+ automate:'Design end-to-end AI agents or automation, standardize operations, and lead AI transformation across teams or processes.'
+};
+
+const uiText={
+ vi:{
+   exportHtml:'Xuất báo cáo (HTML)', exportCsv:'Xuất dữ liệu (CSV)', png:'Tải kết quả (PNG)', reset:'Xóa điểm',
+   personalEdition:'Phiên bản cá nhân',
+   heroLead:'Công cụ tự đánh giá được cá nhân hoá cho công việc Digital Purchasing, Supply Chain Analytics, Data và Automation — giúp xác định vị trí hiện tại trên lộ trình ứng dụng AI, nhận diện khoảng trống năng lực và sắp xếp thứ tự ưu tiên phát triển.',
+   outcomesTitle:'Kết quả sau khi hoàn thành đánh giá',
+   outcome1:'Điểm cho 6 chủ đề và mức độ trưởng thành tương ứng theo 5 cấp độ: Beginner, Practitioner, Proficient, Builder và Leader.',
+   outcome2:'Biểu đồ so sánh hiện trạng với mục tiêu bạn tự xác định cho từng chủ đề.',
+   outcome3:'Danh sách ưu tiên cải thiện, kèm khuyến nghị gắn với công việc Data, Purchasing và Automation.',
+   outcome4:'Có thể lưu trực tiếp trên trình duyệt, xuất CSV, HTML và ảnh PNG làm mốc so sánh.',
+   aspectsTitle:'Bốn khía cạnh được đánh giá',
+   aspectsIntro:'Sáu chủ đề đánh giá nằm tại giao điểm của bốn khía cạnh nền tảng. Phiên bản cá nhân giữ cấu trúc Learn, Lead, Access, Scale, Secure và Automate, nhưng câu hỏi được điều chỉnh sát với workflow dữ liệu và chuỗi cung ứng.',
+   people:'Con người', peopleDesc:'Kỹ năng AI, data literacy, khả năng chuyển kiến thức thành cách làm ổn định và chia sẻ được.', peopleRel:'Chủ đề liên quan: Learn, Lead, Access',
+   process:'Quy trình', processDesc:'Cách ưu tiên use case, đo lường giá trị, kiểm soát rủi ro và tự động hoá công việc.', processRel:'Chủ đề liên quan: Lead, Secure, Automate',
+   tech:'Công nghệ', techDesc:'Công cụ AI, BI, automation, data platform và khả năng mở rộng giải pháp.', techRel:'Chủ đề liên quan: Learn, Scale, Automate',
+   data:'Dữ liệu', dataDesc:'Chất lượng, tính thống nhất, khả năng truy cập, tái sử dụng, truy vết và bảo mật dữ liệu.', dataRel:'Chủ đề liên quan: Access, Scale, Secure',
+   overview:'Tổng quan', overviewHint:'Mỗi cạnh nối hai khía cạnh. Điểm chủ đề càng cao, mức độ trưởng thành càng lớn.',
+   guideTitle:'Hướng dẫn chấm điểm',
+   guideP1:'Mỗi chủ đề gồm 5 tiêu chí. Với từng tiêu chí, chọn mô tả phản ánh đúng hiện trạng của bạn, không dựa trên kế hoạch tương lai. Nếu đang ở giữa hai mức, chọn mức thấp hơn.',
+   guideP2:'Ghi lại căn cứ cho từng lựa chọn — ví dụ dashboard, workflow, tool, report, số giờ tiết kiệm, KPI hoặc link project — tại mục “Ghi chú bằng chứng” để làm mốc cho lần đánh giá sau.',
+   results:'Kết quả',
+   rule:'Thang điểm 1–5: LEVEL 1 = Beginner – Learn AI; LEVEL 2 = Practitioner – Use AI; LEVEL 3 = Proficient – Integrate AI; LEVEL 4 = Builder – Automate with AI; LEVEL 5 = Leader – Transform with AI. Điểm chủ đề là trung bình 5 tiêu chí đã chấm; điểm tổng là trung bình của 6 chủ đề.',
+   currentTarget:'Hiện trạng và mục tiêu', gapTitle:'Khoảng cách theo chủ đề',
+   tableHead:['Chủ đề','Khía cạnh','Đã chấm','Điểm','Giai đoạn','Mục tiêu','Khoảng cách'],
+   total:'Tổng', priority:'Ưu tiên cải thiện', save:'Lưu đánh giá', print:'In / Save PDF',
+   footer:'Cấu trúc 6 chủ đề được giữ lại, trong khi thang trưởng thành được tùy biến thành 5 mức từ Beginner → Practitioner → Proficient → Builder → Leader. Nội dung câu hỏi đã được cá nhân hoá cho Data, Digital Purchasing, Supply Chain và Automation.',
+   target:'Mục tiêu', exampleEvidence:'Ví dụ bằng chứng cá nhân', evidence:'Ghi chú bằng chứng',
+   evidencePlaceholder:'Ví dụ: dashboard, report, workflow, project, KPI, số giờ tiết kiệm...',
+   notAssessed:'Chưa chấm', progressSuffix:'tiêu chí đã chấm',
+   noPriority:'Chưa có điểm. Hoàn thành ít nhất một chủ đề để xem thứ tự ưu tiên.',
+   current:'Hiện trạng', targetLegend:'Mục tiêu', currentMaturity:'Mức độ hiện tại',
+   saved:'Đã lưu đánh giá trên trình duyệt này.', resetConfirm:'Xóa toàn bộ điểm, mục tiêu và ghi chú?',
+   pngNeedScore:'Hãy chấm ít nhất một tiêu chí trước khi tải PNG.',
+   scaleGuide:[
+     ['LEVEL 1 · Cơ bản','Beginner – Learn AI','Biết sử dụng AI để hỏi đáp, tìm kiếm thông tin, dịch thuật và xử lý các tác vụ đơn giản.'],
+     ['LEVEL 2 · Ứng dụng','Practitioner – Use AI','Sử dụng AI thường xuyên trong công việc; biết viết prompt có cấu trúc, xử lý email, tài liệu, Excel và nội dung.'],
+     ['LEVEL 3 · Tích hợp','Proficient – Integrate AI','Kết hợp AI với phân tích dữ liệu, Power BI, SQL, Python, Supply Chain và hỗ trợ ra quyết định.'],
+     ['LEVEL 4 · Tự động hóa','Builder – Automate with AI','Xây dựng workflow AI, tool nội bộ, automation, AI Agent hoặc kết nối AI với database/API/Power Platform.'],
+     ['LEVEL 5 · Dẫn dắt','Leader – Transform with AI','Thiết kế chiến lược AI, chuẩn hóa cách sử dụng AI cho team, xây use case, governance và thúc đẩy AI transformation.']
+   ]
+ },
+ en:{
+   exportHtml:'Export report (HTML)', exportCsv:'Export data (CSV)', png:'Download result (PNG)', reset:'Reset scores',
+   personalEdition:'Personal edition',
+   heroLead:'A personalized self-assessment for Digital Purchasing, Supply Chain Analytics, Data and Automation — designed to identify your current AI capability level, reveal development gaps, and prioritize the next areas to strengthen.',
+   outcomesTitle:'What you get after completing the assessment',
+   outcome1:'Scores across 6 topics and the corresponding 5 competency levels: Beginner, Practitioner, Proficient, Builder and Leader.',
+   outcome2:'A comparison of your current capability versus the target you set for each topic.',
+   outcome3:'A prioritized improvement list with recommendations linked to Data, Purchasing and Automation work.',
+   outcome4:'Save locally in your browser and export CSV, HTML or PNG snapshots for future comparison.',
+   aspectsTitle:'Four dimensions assessed',
+   aspectsIntro:'The six assessment topics sit at the intersection of four foundational dimensions. This personal edition retains Learn, Lead, Access, Scale, Secure and Automate, with questions tailored to data and supply-chain workflows.',
+   people:'People', peopleDesc:'AI skills, data literacy, and the ability to turn knowledge into stable, shareable ways of working.', peopleRel:'Related topics: Learn, Lead, Access',
+   process:'Process', processDesc:'How use cases are prioritized, value is measured, risks are controlled and work is automated.', processRel:'Related topics: Lead, Secure, Automate',
+   tech:'Technology', techDesc:'AI tools, BI, automation, data platforms and the ability to scale solutions.', techRel:'Related topics: Learn, Scale, Automate',
+   data:'Data', dataDesc:'Data quality, consistency, accessibility, reuse, traceability and security.', dataRel:'Related topics: Access, Scale, Secure',
+   overview:'Overview', overviewHint:'Each edge connects two dimensions. The higher the topic score, the higher the competency level.',
+   guideTitle:'Scoring guide',
+   guideP1:'Each topic contains 5 criteria. For each criterion, select the description that best reflects your current state, not your future plan. If you are between two levels, choose the lower level.',
+   guideP2:'Record evidence for each choice — for example a dashboard, workflow, tool, report, hours saved, KPI or project link — so you have a baseline for the next assessment.',
+   results:'Results',
+   rule:'Scoring uses a 1–5 scale: LEVEL 1 = Beginner – Learn AI; LEVEL 2 = Practitioner – Use AI; LEVEL 3 = Proficient – Integrate AI; LEVEL 4 = Builder – Automate with AI; LEVEL 5 = Leader – Transform with AI. Each topic score is the average of its 5 assessed criteria; the overall score is the average of all 6 topics.',
+   currentTarget:'Current vs target', gapTitle:'Gap by topic',
+   tableHead:['Topic','Dimension','Assessed','Score','Level','Target','Gap'],
+   total:'Overall', priority:'Improvement priorities', save:'Save assessment', print:'Print / Save PDF',
+   footer:'The six-topic structure is retained, while the competency scale is customized into five levels from Beginner → Practitioner → Proficient → Builder → Leader. Questions are personalized for Data, Digital Purchasing, Supply Chain and Automation.',
+   target:'Target', exampleEvidence:'Example personal evidence', evidence:'Evidence notes',
+   evidencePlaceholder:'Example: dashboard, report, workflow, project, KPI, hours saved...',
+   notAssessed:'Not assessed', progressSuffix:'criteria assessed',
+   noPriority:'No score yet. Complete at least one topic to see improvement priorities.',
+   current:'Current', targetLegend:'Target', currentMaturity:'Current competency',
+   saved:'Assessment saved in this browser.', resetConfirm:'Clear all scores, targets and notes?',
+   pngNeedScore:'Please assess at least one criterion before downloading the PNG.',
+   scaleGuide:[
+     ['LEVEL 1 · Foundation','Beginner – Learn AI','Use AI for basic Q&A, information search, translation and simple tasks.'],
+     ['LEVEL 2 · Application','Practitioner – Use AI','Use AI regularly at work; write structured prompts and handle email, documents, Excel and content.'],
+     ['LEVEL 3 · Integration','Proficient – Integrate AI','Combine AI with data analysis, Power BI, SQL, Python, Supply Chain work and decision support.'],
+     ['LEVEL 4 · Automation','Builder – Automate with AI','Build AI workflows, internal tools, automation, AI agents, or connect AI with databases, APIs and Power Platform.'],
+     ['LEVEL 5 · Leadership','Leader – Transform with AI','Design AI strategy, standardize team usage, build AI use cases and governance, and drive AI transformation.']
+   ]
+ }
+};
+
+function ui(){ return uiText[currentLang]; }
+function stagesNow(){ return currentLang==='vi' ? stagesVI : stagesEN; }
+function levelNamesNow(){ return currentLang==='vi' ? levelNamesVI : levelNamesEN; }
+function leaderTextsNow(){ return currentLang==='vi' ? leaderTextsVI : leaderTextsEN; }
+
 function levelOptionText(topicKey,opts,level){
   if(level<=4) return opts[level-1];
-  return leaderTexts[topicKey] || 'Chuẩn hóa cách làm, dẫn dắt team và mở rộng AI transformation.'
+  const lt=leaderTextsNow();
+  return lt[topicKey] || (currentLang==='vi'
+    ? 'Chuẩn hóa cách làm, dẫn dắt team và mở rộng AI transformation.'
+    : 'Standardize the approach, lead the team and expand AI transformation.');
 }
 function shortStage(v){
-  if(v==null||Number.isNaN(v)) return 'Chưa chấm';
+  if(v==null||Number.isNaN(v)) return ui().notAssessed;
   if(v<1.5) return 'Beginner';
   if(v<2.5) return 'Practitioner';
   if(v<3.5) return 'Proficient';
   if(v<4.5) return 'Builder';
   return 'Leader';
 }
-const topicDefs=[
+const topicDefsVI=[
 {key:'learn',name:'Learn',vi:'Học hỏi',pair:'Con người × Công nghệ',color:'#39a866',desc:'Chất lượng kỹ năng AI, data literacy, lộ trình học tập và khả năng chia sẻ cách làm để tăng năng lực cá nhân.',examples:[['AI + Data','Kết hợp AI với Excel, SQL, Python hoặc Power BI trong công việc hằng ngày.'],['Reusable','Biến prompt, template và workflow thành tài sản có thể dùng lại.'],['Sharing','Chia sẻ cách làm, hướng dẫn hoặc best practice cho đồng nghiệp.']],qs:[
 ['L1','Hiểu biết AI trong công việc','Bạn sử dụng AI trong công việc ở mức độ nào?',['Chưa dùng hoặc dùng rất ít.','Dùng cá nhân cho tìm kiếm, viết hoặc tác vụ đơn lẻ.','Dùng hằng tuần trong workflow rõ ràng, biết kiểm chứng kết quả.','AI trở thành phương thức làm việc thường xuyên; bạn chủ động đề xuất và chia sẻ use case mới.']],
 ['L2','Năng lực Data + AI','Bạn kết hợp AI với kỹ năng dữ liệu như thế nào?',['Chưa kết hợp.','AI hỗ trợ công thức, DAX, SQL hoặc code đơn giản.','AI hỗ trợ phân tích, debug, dashboard và automation trong các dự án thực tế.','Bạn thiết kế reusable solution/agent kết nối dữ liệu và nghiệp vụ.']],
@@ -223,9 +329,12 @@ const topicDefs=[
 ['U5','Giám sát và vận hành','Khi pipeline, automation hoặc model gặp lỗi, bạn phát hiện thế nào?',['Khi user báo hoặc kiểm tra muộn.','Kiểm tra thủ công theo lịch.','Có log, monitoring và thông báo lỗi.','Có retry, alert, versioned deployment, test và quy trình rollback/CI-CD phù hợp.']]
 ]}
 ];
+
+const topicDefsEN=[{"key":"learn","name":"Learn","vi":"Learning","pair":"People × Technology","color":"#39a866","desc":"The quality of your AI skills, data literacy, learning roadmap, and ability to turn knowledge into repeatable ways of working.","examples":[["AI + Data","Combine AI with Excel, SQL, Python or Power BI in daily work."],["Reusable","Turn prompts, templates and workflows into reusable assets."],["Sharing","Share working methods, guidance and best practices with colleagues."]],"qs":[["L1","AI proficiency at work","How extensively do you use AI in your work?",["Not used or used very rarely.","Used personally for search, writing or isolated tasks.","Used weekly in clear workflows with result verification.","AI is a regular way of working; you proactively propose and share new use cases."]],["L2","Data + AI capability","How do you combine AI with your data skills?",["Not combined yet.","AI helps with formulas, DAX, SQL or simple code.","AI supports analysis, debugging, dashboards and automation in real projects.","You design reusable solutions or agents that connect data and business processes."]],["L3","Capability development roadmap","Is your AI learning tied to specific business needs?",["No defined roadmap.","Learning is ad hoc based on immediate needs.","A skills roadmap is linked to priority use cases and expected outcomes.","You learn through real projects, measure progress and update the roadmap regularly."]],["L4","Collaboration and community learning","What do you do when a problem exceeds your current capability?",["No clear support source.","Search documentation or ask communities when needed.","Use a team, partner or mentor for support and knowledge transfer.","Co-develop solutions and contribute knowledge back to the team or community."]],["L5","Knowledge sharing","How are prompts, templates and implementation experience stored and shared?",["Not stored systematically.","Stored individually for personal use.","A reusable library of prompts, templates, code snippets or guides exists.","A playbook or knowledge base is maintained and used as a standard way of working."]]]},{"key":"lead","name":"Lead","vi":"Leadership","pair":"People × Process","color":"#d2a527","desc":"How proactively you select AI use cases, connect them to KPIs, coordinate stakeholders, and demonstrate business value.","examples":[["KPI","Link AI use cases to time savings, cost, OTD, shortage risk or decision quality."],["Portfolio","Prioritize projects by impact × effort × data readiness."],["Value","Measure before and after results instead of only demonstrating technology."]],"qs":[["D1","Initiative ownership","Who owns an AI use case through to its final outcome?",["No clear owner.","You initiate and maintain individual use cases yourself.","A stakeholder or manager co-owns the objective and supports implementation.","A clear sponsor, roadmap and mechanism exist to expand across teams or processes."]],["D2","Link to business KPIs","Are AI use cases linked to specific performance targets?",["No KPI linkage.","Benefits are mainly qualitative.","Each use case has at least one quantitative KPI such as time, cost, service, risk or quality.","AI KPIs are part of improvement plans and reviewed regularly."]],["D3","Prioritization and approval","How do you select AI use cases?",["Based on interest or new tools.","Based on emerging needs.","Based on impact × effort × data readiness with a simple business case.","Managed like an investment portfolio: scale strong projects and stop weak ones."]],["D4","Collaboration model","How do you work with Purchasing, SCM, IT, Data and other stakeholders?",["Work independently.","Coordinate when data or support is needed.","Roles, review cadence and feedback loops are clear.","A standard operating model, RACI and champion network support multiple groups."]],["D5","Value measurement","How do you measure results from AI and automation?",["Not measured.","A few success cases are recorded.","Readiness, adoption and business impact are measured before and after.","ROI or value is reported regularly and used to guide further investment."]]]},{"key":"access","name":"Access","vi":"Data","pair":"People × Data","color":"#77569a","desc":"How well SAP, ODS, Excel, SharePoint and other sources are integrated, standardized, traceable and reusable.","examples":[["Integration","Reduce copy/paste through queries, dataflows, SQL or pipelines."],["Master Data","Standardize Material, Vendor, Plant, MPN and business mappings."],["Lineage","Know where each KPI comes from, how it is calculated, and when it refreshes."]],"qs":[["A1","Data integration across systems","How are SAP, ODS, Excel and SharePoint data combined?",["Data is scattered and consolidated manually.","A summary file or simple query is used.","A standard data model or pipeline is reused across reports.","A semantic layer, API or metadata layer lets multiple solutions use the same source."]],["A2","Master data","Are Material, Vendor, MPN, Plant and grouping rules consistent?",["Inconsistent and manually reconciled.","A separate mapping file is maintained.","Standard rules, owners and update processes are defined.","Automated checks validate master-data creation or changes and flag inconsistencies."]],["A3","Data quality and accountability","When data is wrong, how do you identify the root cause and owner?",["Issues are discovered late after reports are already wrong.","Issues are fixed manually case by case.","Data owners, validation rules and quality checklists are defined.","Data-quality KPIs, alerts and root-cause processes are in place."]],["A4","Search and reuse","Can you find and reuse old datasets, queries, models or logic?",["Each project is managed separately.","Items are found again from personal folders or files.","A shared repository exists for queries, models, templates and documentation.","A catalog or search capability helps people discover, share and contribute data/AI assets."]],["A5","Data sharing with stakeholders","How are data and reports shared with teams or partners?",["Files are sent manually by email or chat.","Files or dashboard links are shared.","Standard dashboards or portals provide appropriate access.","Two-way data exchange is automated through APIs or workflows where appropriate."]]]},{"key":"scale","name":"Scale","vi":"Scaling","pair":"Data × Technology","color":"#5476a8","desc":"How effectively solutions move from personal files or tools into stable platforms that can support more data, plants or teams.","examples":[["Platform","Move from local files to shared, cloud or service-based delivery."],["Reuse","Use configuration-driven design instead of copying code for every case."],["Performance","Keep refreshes stable, handle errors and monitor capacity."]],"qs":[["S1","Data platform","Where is analytical data stored and managed?",["Spreadsheets or personal computers.","Shared drives or common workspaces.","Cloud or data platforms support multiple dashboards and automations.","An integrated platform supports both AI experimentation and large-scale operations."]],["S2","Data ingestion","How is data brought into the analytical environment?",["Manual upload or entry.","Scripts or scheduled refreshes are built per source.","Scheduled pipelines follow ingestion standards and handle errors.","Near-real-time ingestion is available; new sources are added mostly by configuration."]],["S3","BI reporting and analytics","How do users access information?",["Static Excel reports.","Dashboards are built for individual needs.","Self-service dashboards use standard data models and measures.","Forecasts, anomaly detection or AI insights are embedded in dashboards."]],["S4","GenAI tools","What type of AI tools do you use?",["Separate accounts or tools with no common standard.","Personal tools used as needed.","Enterprise tools or managed workspaces are used.","AI agents or APIs connect internal data with specialized workflows."]],["S5","Solution deployment and operation","Where do automations or models run?",["Manually on a personal computer.","Scripts or macros run on simple schedules.","Services or cloud platforms provide logging and multi-user operation.","Multiple solutions run in parallel with versioning, scaling and standard deployment."]]]},{"key":"secure","name":"Secure","vi":"Security","pair":"Data × Process","color":"#d4574f","desc":"How well access, sensitive data, GenAI use, and output quality are controlled before results are used in business work.","examples":[["Access","Use role-based access and least privilege."],["GenAI","Avoid sending internal data to inappropriate AI tools."],["Review","Apply human review, source checking and traceability to AI outputs."]],"qs":[["C1","Access control","How is access to dashboards, files and data sources granted?",["Access is broad or unclear.","Permissions are managed manually per file or report.","Role-based access grants only what is necessary.","Audits, periodic access reviews and unusual-access alerts are in place."]],["C2","GenAI usage policy","Are there clear rules for what data may be used with which AI tools?",["No clear rules.","Assessed manually case by case.","Clear rules exist and enterprise or approved tools are preferred.","Policies, DLP/approved tools and recurring training are in place."]],["C3","Personal and sensitive data","How is sensitive data managed?",["Not classified.","Some sensitive data is recognized but handling is not standardized.","Classification, masking/encryption or appropriate handling rules are used.","Risk reviews, audit trails and incident-response processes are performed regularly."]],["C4","AI output review","Are AI outputs checked before being used?",["Used directly.","Checked when something appears unusual.","A checklist verifies sources, logic, code or important figures.","Approval gates are defined by risk level with systematic testing."]],["C5","Data lineage","Can you identify the source and calculation behind KPIs or reports?",["Not traceable.","Some reports have manual notes.","Sources, business rules, refresh timing and owners are documented.","Full lineage, version history and change logs are maintained."]]]},{"key":"automate","name":"Automate","vi":"Automation","pair":"Technology × Process","color":"#9b764d","desc":"Your ability to automate reporting, analysis, purchasing workflows and monitoring so people can focus on exceptions and decisions.","examples":[["Recurring","Run recurring reports automatically with alerts."],["Predictive","Run forecast, ETA, shortage or risk scoring on a schedule."],["Workflow","Automate end-to-end processes while people focus on exceptions and approvals."]],"qs":[["U1","Recurring reports","How are weekly or monthly reports prepared?",["Prepared manually each cycle.","Macros or queries reduce some manual steps.","Scheduled automation refreshes data and alerts on failures.","AI drafts insights or commentary, with a responsible person reviewing before release."]],["U2","Forecasting and predictive analytics","How do you create forecasts, risk scores or ETA predictions?",["Based mainly on experience or simple formulas.","Rule-based or manual models are used case by case.","Models or scoring run regularly with basic accuracy tracking.","Models are retrained or adjusted as data changes, with drift and accuracy monitoring."]],["U3","Business-process automation","How automated are Purchasing and SCM workflows?",["Most steps are manual.","Macros or scripts support individual steps.","Most of the process is end-to-end, with manual handling focused on exceptions.","AI analyzes the workflow and proposes or executes the next action with suitable approval."]],["U4","GenAI in workflows","Is GenAI integrated into standard work?",["Used separately, mainly for Q&A or email drafting.","Prompts or templates support selected tasks.","Integrated into standard work for analysis, drafting, summaries, coding and documentation.","AI agents perform repeated steps while people approve final outcomes."]],["U5","Monitoring and operations","How do you detect failures in pipelines, automations or models?",["Detected only when users report issues or through late checks.","Checked manually on a schedule.","Logs, monitoring and error notifications are available.","Retry, alerting, versioned deployment, testing and rollback/CI-CD processes are used where appropriate."]]]}];
+let topicDefs = currentLang==='en' ? topicDefsEN : topicDefsVI;
 const state={scores:{},notes:{},targets:{}};
 function stageOf(v){
- if(v==null||Number.isNaN(v))return 'Chưa chấm';
+ if(v==null||Number.isNaN(v))return ui().notAssessed;
  if(v<1.5)return 'LEVEL 1 · Beginner – Learn AI';
  if(v<2.5)return 'LEVEL 2 · Practitioner – Use AI';
  if(v<3.5)return 'LEVEL 3 · Proficient – Integrate AI';
@@ -238,27 +347,37 @@ function build(){
  topicDefs.forEach(t=>{
   state.targets[t.key]=state.targets[t.key]??3;
   const sec=document.createElement('section');sec.className='topic';sec.style.setProperty('--accent',t.color);
-  sec.innerHTML=`<div class="topic-head"><div><div class="topic-title"><h2>${t.name}</h2><span class="vi">${t.vi}</span></div><div class="topic-kicker">${t.pair}</div><p class="topic-desc">${t.desc}</p></div><div class="topic-side"><div class="topic-score"><span id="topicScore_${t.key}">–</span><br><span id="topicStage_${t.key}">Chưa chấm</span></div><div class="target-row"><span>Mục tiêu</span><select id="target_${t.key}" onchange="setTarget('${t.key}',this.value)">${[1,2,3,4,5].map(i=>`<option value="${i}" ${i===3?'selected':''}>${i} · ${stages[i]}</option>`).join('')}</select></div></div></div><div class="insight-cards">${t.examples.map((e,i)=>`<div class="insight-card"><b>${e[0]}</b><p>${e[1]}</p><small>Ví dụ bằng chứng cá nhân</small></div>`).join('')}</div><div class="criteria">${t.qs.map(q=>renderCriterion(t,q)).join('')}</div>`;
+  sec.innerHTML=`<div class="topic-head"><div><div class="topic-title"><h2>${t.name}</h2><span class="vi">${t.vi}</span></div><div class="topic-kicker">${t.pair}</div><p class="topic-desc">${t.desc}</p></div><div class="topic-side"><div class="topic-score"><span id="topicScore_${t.key}">–</span><br><span id="topicStage_${t.key}">${ui().notAssessed}</span></div><div class="target-row"><span>${ui().target}</span><select id="target_${t.key}" onchange="setTarget('${t.key}',this.value)">${[1,2,3,4,5].map(i=>`<option value="${i}" ${i===3?'selected':''}>${i} · ${stagesNow()[i]}</option>`).join('')}</select></div></div></div><div class="insight-cards">${t.examples.map((e,i)=>`<div class="insight-card"><b>${e[0]}</b><p>${e[1]}</p><small>${ui().exampleEvidence}</small></div>`).join('')}</div><div class="criteria">${t.qs.map(q=>renderCriterion(t,q)).join('')}</div>`;
   host.appendChild(sec);
  });
  buildOverview();loadLocal();update();
 }
-function renderCriterion(t,q){const [code,title,question,opts]=q;const id=`${t.key}_${code}`;return `<div class="criterion"><h3><span class="code">${code}</span>${title}</h3><div class="question">${question}</div><div class="choices">${[1,2,3,4,5].map(i=>{const txt=levelOptionText(t.key,opts,i);return `<button type="button" class="choice" data-id="${id}" data-score="${i}" onclick="pick('${id}',${i},this,'${t.color}')"><span class="ch-label">LEVEL ${i} · ${levelNames[i]}</span><span class="ch-text"><b>${stages[i]}</b><br>${txt}</span></button>`}).join('')}</div><button class="evidence-toggle" type="button" onclick="toggleEvidence('${id}',this)">▸ Ghi chú bằng chứng</button><div class="evidence" id="ev_${id}"><textarea id="note_${id}" placeholder="Ví dụ: dashboard, report, workflow, project, KPI, số giờ tiết kiệm..." oninput="setNote('${id}',this.value)"></textarea></div></div>`}
+function renderCriterion(t,q){
+ const [code,title,question,opts]=q;
+ const id=`${t.key}_${code}`;
+ return `<div class="criterion"><h3><span class="code">${code}</span>${title}</h3><div class="question">${question}</div><div class="choices">${[1,2,3,4,5].map(i=>{const txt=levelOptionText(t.key,opts,i);return `<button type="button" class="choice" data-id="${id}" data-score="${i}" onclick="pick('${id}',${i},this,'${t.color}')"><span class="ch-label">LEVEL ${i} · ${levelNamesNow()[i]}</span><span class="ch-text"><b>${stagesNow()[i]}</b><br>${txt}</span></button>`}).join('')}</div><button class="evidence-toggle" type="button" onclick="toggleEvidence('${id}',this)">▸ ${ui().evidence}</button><div class="evidence" id="ev_${id}"><textarea id="note_${id}" placeholder="${ui().evidencePlaceholder}" oninput="setNote('${id}',this.value)"></textarea></div></div>`
+}
 function pick(id,score,el,color){state.scores[id]=score;document.querySelectorAll(`[data-id="${id}"]`).forEach(x=>x.classList.remove('selected'));el.classList.add('selected');el.style.setProperty('--accent',color);saveLocal(true);update()}
 function setNote(id,v){state.notes[id]=v;saveLocal(true)}
-function toggleEvidence(id,btn){const e=document.getElementById('ev_'+id);e.classList.toggle('open');btn.textContent=(e.classList.contains('open')?'▾':'▸')+' Ghi chú bằng chứng'}
+function toggleEvidence(id,btn){const e=document.getElementById('ev_'+id);e.classList.toggle('open');btn.textContent=(e.classList.contains('open')?'▾':'▸')+' '+ui().evidence}
 function setTarget(k,v){state.targets[k]=Number(v);saveLocal(true);update()}
 function valuesFor(t){return t.qs.map(q=>state.scores[`${t.key}_${q[0]}`]).filter(v=>v!=null)}
 function topicAvg(t){return avg(valuesFor(t))}
 function buildOverview(){document.getElementById('overviewScores').innerHTML=topicDefs.map(t=>`<div><span style="color:${t.color}">${t.name}</span><span class="score" id="ov_${t.key}">–</span></div>`).join('')}
-function recommendation(k,v){const r={learn:'Chuẩn hoá prompt/playbook, xây lộ trình kỹ năng và chia sẻ workflow dùng lại.',lead:'Gắn use case với KPI, owner, business case và cadence review.',access:'Chuẩn hoá data model, master data, data quality và lineage.',scale:'Chuyển solution từ file/tool cá nhân sang kiến trúc cấu hình được, có monitoring.',secure:'Nâng governance: dữ liệu nhạy cảm, role-based access, human review và traceability.',automate:'Mở rộng automation end-to-end, predictive analytics và exception-based workflow.'};return (v>=2.5?'Duy trì và đóng gói thành chuẩn có thể nhân rộng. ':v>=1.75?'Tập trung đưa từ Strategic lên reusable/platform level. ':v>=1?'Cần chuẩn hoá cách làm trước khi scale. ':'Ưu tiên xây nền tảng và bằng chứng thực tế. ')+r[k]}
+function recommendation(k,v){
+ const vi={learn:'Chuẩn hoá prompt/playbook, xây lộ trình kỹ năng và chia sẻ workflow dùng lại.',lead:'Gắn use case với KPI, owner, business case và cadence review.',access:'Chuẩn hoá data model, master data, data quality và lineage.',scale:'Chuyển solution từ file/tool cá nhân sang kiến trúc cấu hình được, có monitoring.',secure:'Nâng governance: dữ liệu nhạy cảm, role-based access, human review và traceability.',automate:'Mở rộng automation end-to-end, predictive analytics và exception-based workflow.'};
+ const en={learn:'Standardize prompts/playbooks, build a skills roadmap, and share reusable workflows.',lead:'Link use cases to KPIs, ownership, business cases and a review cadence.',access:'Standardize data models, master data, data quality and lineage.',scale:'Move solutions from personal files/tools to configurable, monitored architecture.',secure:'Strengthen governance for sensitive data, role-based access, human review and traceability.',automate:'Expand end-to-end automation, predictive analytics and exception-based workflows.'};
+ const r=currentLang==='vi'?vi:en;
+ if(currentLang==='vi') return (v>=4.5?'Duy trì vai trò dẫn dắt và nhân rộng chuẩn. ':v>=3.5?'Tập trung nâng từ Builder lên năng lực dẫn dắt và transformation. ':v>=2.5?'Tập trung đưa từ Proficient lên automation/reusable level. ':v>=1.5?'Cần chuẩn hoá cách làm trước khi tích hợp sâu. ':'Ưu tiên xây nền tảng và bằng chứng thực tế. ')+r[k];
+ return (v>=4.5?'Sustain leadership and scale the standard. ':v>=3.5?'Move from Builder toward leadership and transformation. ':v>=2.5?'Move from Proficient toward reusable automation. ':v>=1.5?'Standardize the approach before deeper integration. ':'Build foundations and practical evidence first. ')+r[k];
+}
 function update(){
- const answered=Object.keys(state.scores).length,total=30;document.getElementById('progressText').textContent=`${answered}/${total} tiêu chí đã chấm`;document.getElementById('progressBar').style.width=(answered/total*100)+'%';
+ const answered=Object.keys(state.scores).length,total=30;document.getElementById('progressText').textContent=`${answered}/${total} ${ui().progressSuffix}`;document.getElementById('progressBar').style.width=(answered/total*100)+'%';
  const rows=[];topicDefs.forEach(t=>{const a=topicAvg(t),n=valuesFor(t).length,target=Number(state.targets[t.key]??3),gap=a==null?null:Math.max(0,target-a);document.getElementById('topicScore_'+t.key).textContent=a==null?'–':a.toFixed(2);document.getElementById('topicStage_'+t.key).textContent=stageOf(a);document.getElementById('ov_'+t.key).textContent=a==null?'–':a.toFixed(2);const sel=document.getElementById('target_'+t.key);if(sel)sel.value=target;rows.push({t,a,n,target,gap})});
  document.getElementById('scoreBody').innerHTML=rows.map(x=>`<tr><td style="font-weight:800;color:${x.t.color}">${x.t.name}</td><td>${x.t.pair}</td><td>${x.n}/5</td><td class="num">${x.a==null?'–':x.a.toFixed(2)}</td><td>${stageOf(x.a)}</td><td class="num">${x.target.toFixed(0)}</td><td class="num">${x.gap==null?'–':x.gap.toFixed(2)}</td></tr>`).join('');
  const overall=avg(rows.map(x=>x.a));document.getElementById('overallScore').textContent=overall==null?'–':overall.toFixed(2);document.getElementById('overallStage').textContent=stageOf(overall);
  document.getElementById('gapList').innerHTML=rows.map(x=>`<div class="gap-row"><b style="color:${x.t.color}">${x.t.name}</b><div class="gapbar"><div class="current" style="width:${(x.a??0)/5*100}%"></div><i class="target" style="left:${x.target/5*100}%"></i></div><em>${x.a==null?'–':x.a.toFixed(1)}</em></div>`).join('');
- const ranked=rows.filter(x=>x.a!=null).sort((a,b)=>(b.gap-a.gap)||(a.a-b.a));document.getElementById('priorityList').innerHTML=ranked.length?ranked.map((x,i)=>`<div class="priority-item"><div class="rank">${i+1}</div><div class="topic-name" style="color:${x.t.color}">${x.t.name}</div><div class="rec">${recommendation(x.t.key,x.a)}</div><div class="gap">Gap ${x.gap.toFixed(2)}</div></div>`).join(''):'<div style="color:#73777c">Chưa có điểm. Hoàn thành ít nhất một chủ đề để xem thứ tự ưu tiên.</div>';
+ const ranked=rows.filter(x=>x.a!=null).sort((a,b)=>(b.gap-a.gap)||(a.a-b.a));document.getElementById('priorityList').innerHTML=ranked.length?ranked.map((x,i)=>`<div class="priority-item"><div class="rank">${i+1}</div><div class="topic-name" style="color:${x.t.color}">${x.t.name}</div><div class="rec">${recommendation(x.t.key,x.a)}</div><div class="gap">Gap ${x.gap.toFixed(2)}</div></div>`).join(''):`<div style="color:#73777c">${ui().noPriority}</div>`;
  drawRadar(rows);saveLocal(true)
 }
 function drawRadar(rows){const c=document.getElementById('radar'),ctx=c.getContext('2d'),w=c.width,h=c.height,cx=w/2,cy=h/2+5,R=125,N=6;ctx.clearRect(0,0,w,h);ctx.font='13px Segoe UI, Arial';ctx.textAlign='center';ctx.textBaseline='middle';
@@ -266,21 +385,60 @@ function drawRadar(rows){const c=document.getElementById('radar'),ctx=c.getConte
  rows.forEach((x,i)=>{const a=-Math.PI/2+i*2*Math.PI/N;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);ctx.strokeStyle='#e5e5e3';ctx.stroke();ctx.fillStyle=x.t.color;ctx.fillText(x.t.name,cx+Math.cos(a)*(R+28),cy+Math.sin(a)*(R+25))});
  function poly(vals,stroke,fill){ctx.beginPath();vals.forEach((v,i)=>{const a=-Math.PI/2+i*2*Math.PI/N,r=R*(v||0)/5,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.closePath();ctx.fillStyle=fill;ctx.fill();ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke()}
  poly(rows.map(x=>x.target),'#a5a7aa','rgba(170,172,175,.10)');poly(rows.map(x=>x.a??0),'#4b4e52','rgba(75,78,82,.12)');ctx.lineWidth=1;
- ctx.fillStyle='#5c6065';ctx.textAlign='left';ctx.fillText('Hiện trạng',22,h-28);ctx.fillStyle='#a5a7aa';ctx.fillText('Mục tiêu',120,h-28)}
+ ctx.fillStyle='#5c6065';ctx.textAlign='left';ctx.fillText(ui().current,22,h-28);ctx.fillStyle='#a5a7aa';ctx.fillText(ui().targetLegend,120,h-28)}
 function syncIdentity(){document.getElementById('personDisplay').textContent=document.getElementById('personName').value||'—';document.getElementById('roleDisplay').textContent=document.getElementById('personRole').value||'—';saveLocal(true)}
 function snapshot(){return {version:3,name:document.getElementById('personName').value,role:document.getElementById('personRole').value,scores:state.scores,notes:state.notes,targets:state.targets,updated:new Date().toISOString()}}
-function saveLocal(silent=false){localStorage.setItem('tin_personal_ai_maturity_v3',JSON.stringify(snapshot()));if(!silent)alert('Đã lưu đánh giá trên trình duyệt này.')}
+function saveLocal(silent=false){localStorage.setItem('tin_personal_ai_maturity_v3',JSON.stringify(snapshot()));if(!silent)alert(ui().saved)}
 function loadLocal(){const raw=localStorage.getItem('tin_personal_ai_maturity_v3');if(!raw)return;try{const x=JSON.parse(raw);if(x.name)document.getElementById('personName').value=x.name;if(x.role)document.getElementById('personRole').value=x.role;Object.assign(state.scores,x.scores||{});Object.assign(state.notes,x.notes||{});Object.assign(state.targets,x.targets||{});syncIdentity();Object.entries(state.scores).forEach(([id,s])=>{const b=document.querySelector(`[data-id="${id}"][data-score="${s}"]`);if(b)b.classList.add('selected')});Object.entries(state.notes).forEach(([id,v])=>{const ta=document.getElementById('note_'+id);if(ta)ta.value=v});topicDefs.forEach(t=>{const s=document.getElementById('target_'+t.key);if(s)s.value=state.targets[t.key]??3})}catch(e){console.warn(e)}}
-function resetAll(){if(!confirm('Xóa toàn bộ điểm, mục tiêu và ghi chú?'))return;localStorage.removeItem('tin_personal_ai_maturity_v3');location.reload()}
-function exportCSV(){const lines=[['Topic','Criterion','Title','Score','Stage','Target','Evidence']];topicDefs.forEach(t=>t.qs.forEach(q=>{const id=`${t.key}_${q[0]}`,s=state.scores[id];lines.push([t.name,q[0],q[1],s??'',s==null?'':stages[s],state.targets[t.key]??3,(state.notes[id]||'').replace(/\n/g,' ')])}));const csv=lines.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');downloadBlob(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),'Tin_Vo_AI_Maturity_Assessment.csv')}
+function resetAll(){if(!confirm(ui().resetConfirm))return;localStorage.removeItem('tin_personal_ai_maturity_v3');location.reload()}
+function exportCSV(){const lines=[currentLang==='vi'?['Chủ đề','Tiêu chí','Tiêu đề','Điểm','Mức độ','Mục tiêu','Bằng chứng']:['Topic','Criterion','Title','Score','Level','Target','Evidence']];topicDefs.forEach(t=>t.qs.forEach(q=>{const id=`${t.key}_${q[0]}`,s=state.scores[id];lines.push([t.name,q[0],q[1],s??'',s==null?'':stagesNow()[s],state.targets[t.key]??3,(state.notes[id]||'').replace(/\n/g,' ')])}));const csv=lines.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');downloadBlob(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),'Tin_Vo_AI_Maturity_Assessment.csv')}
 function exportHTML(){saveLocal(true);const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;downloadBlob(new Blob([html],{type:'text/html;charset=utf-8'}),'Tin_Vo_AI_Maturity_Assessment_Report.html')}
 function downloadBlob(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
-function downloadPNG(){const rows=topicDefs.map(t=>({t,a:topicAvg(t),target:Number(state.targets[t.key]??3)})),overall=avg(rows.map(x=>x.a));if(overall==null){alert('Hãy chấm ít nhất một tiêu chí trước khi tải PNG.');return}const W=1600,H=1050,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,W,H);x.fillStyle='#292c30';x.font='800 54px Segoe UI, Arial';x.fillText('Personal AI Competency Assessment',90,95);x.font='24px Segoe UI, Arial';x.fillStyle='#6b6f74';x.fillText((document.getElementById('personName').value||'')+'  •  '+(document.getElementById('personRole').value||''),90,140);x.strokeStyle='#dfdfdd';x.beginPath();x.moveTo(90,172);x.lineTo(1510,172);x.stroke();
- x.fillStyle='#303338';x.font='800 82px Segoe UI, Arial';x.fillText(overall.toFixed(2),90,285);x.font='20px Segoe UI, Arial';x.fillStyle='#73777c';x.fillText('/ 5.00',245,282);x.font='700 27px Segoe UI, Arial';x.fillStyle='#303338';x.fillText(stageOf(overall),90,330);x.font='18px Segoe UI, Arial';x.fillStyle='#777b80';x.fillText('Current maturity',90,365);
- x.font='700 23px Segoe UI, Arial';x.fillStyle='#303338';x.fillText('Dimension scores',90,440);let yy=490;rows.forEach(r=>{x.fillStyle=r.t.color;x.font='700 20px Segoe UI, Arial';x.fillText(r.t.name,90,yy);x.fillStyle='#efefed';roundRect(x,250,yy-17,720,18,9,true);x.fillStyle=r.t.color;roundRect(x,250,yy-17,720*((r.a??0)/5),18,9,true);x.fillStyle='#52565b';x.font='19px Segoe UI, Arial';x.fillText(r.a==null?'–':r.a.toFixed(2),1000,yy);x.fillStyle='#8a8d91';x.font='15px Segoe UI, Arial';x.fillText('Target '+r.target,1080,yy);yy+=68});
+function downloadPNG(){const rows=topicDefs.map(t=>({t,a:topicAvg(t),target:Number(state.targets[t.key]??3)})),overall=avg(rows.map(x=>x.a));if(overall==null){alert(ui().pngNeedScore);return}const W=1600,H=1050,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,W,H);x.fillStyle='#292c30';x.font='800 54px Segoe UI, Arial';x.fillText('Personal AI Competency Assessment',90,95);x.font='24px Segoe UI, Arial';x.fillStyle='#6b6f74';x.fillText((document.getElementById('personName').value||'')+'  •  '+(document.getElementById('personRole').value||''),90,140);x.strokeStyle='#dfdfdd';x.beginPath();x.moveTo(90,172);x.lineTo(1510,172);x.stroke();
+ x.fillStyle='#303338';x.font='800 82px Segoe UI, Arial';x.fillText(overall.toFixed(2),90,285);x.font='20px Segoe UI, Arial';x.fillStyle='#73777c';x.fillText('/ 5.00',245,282);x.font='700 27px Segoe UI, Arial';x.fillStyle='#303338';x.fillText(stageOf(overall),90,330);x.font='18px Segoe UI, Arial';x.fillStyle='#777b80';x.fillText(ui().currentMaturity,90,365);
+ x.font='700 23px Segoe UI, Arial';x.fillStyle='#303338';x.fillText('Dimension scores',90,440);let yy=490;rows.forEach(r=>{x.fillStyle=r.t.color;x.font='700 20px Segoe UI, Arial';x.fillText(r.t.name,90,yy);x.fillStyle='#efefed';roundRect(x,250,yy-17,720,18,9,true);x.fillStyle=r.t.color;roundRect(x,250,yy-17,720*((r.a??0)/5),18,9,true);x.fillStyle='#52565b';x.font='19px Segoe UI, Arial';x.fillText(r.a==null?'–':r.a.toFixed(2),1000,yy);x.fillStyle='#8a8d91';x.font='15px Segoe UI, Arial';x.fillText(ui().target+' '+r.target,1080,yy);yy+=68});
  const ranked=rows.filter(r=>r.a!=null).sort((a,b)=>(b.target-b.a)-(a.target-a.a)).slice(0,3);x.fillStyle='#303338';x.font='700 23px Segoe UI, Arial';x.fillText('Top priorities',1160,440);yy=490;ranked.forEach((r,i)=>{x.fillStyle='#f2f2f0';x.beginPath();x.arc(1180,yy-6,22,0,Math.PI*2);x.fill();x.fillStyle='#33363a';x.font='700 17px Segoe UI, Arial';x.textAlign='center';x.fillText(String(i+1),1180,yy);x.textAlign='left';x.fillStyle=r.t.color;x.font='700 20px Segoe UI, Arial';x.fillText(r.t.name,1220,yy);x.fillStyle='#666a70';x.font='15px Segoe UI, Arial';wrap(x,recommendation(r.t.key,r.a),1220,yy+28,275,22);yy+=140});x.fillStyle='#8a8d91';x.font='15px Segoe UI, Arial';x.fillText('Generated '+new Date().toLocaleString('vi-VN'),90,H-55);c.toBlob(b=>downloadBlob(b,'Tin_Vo_AI_Maturity_Result.png'),'image/png')}
 function roundRect(ctx,x,y,w,h,r,fill){ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(fill)ctx.fill()}
 function wrap(ctx,text,x,y,maxW,lineH){const words=text.split(' ');let line='';for(const word of words){const test=line+word+' ';if(ctx.measureText(test).width>maxW&&line){ctx.fillText(line,x,y);line=word+' ';y+=lineH}else line=test}ctx.fillText(line,x,y)}
+
+function setText(id,val){const e=document.getElementById(id);if(e)e.textContent=val}
+function applyStaticTranslations(){
+ const t=ui();
+ document.documentElement.lang=currentLang;
+ document.getElementById('langVi')?.classList.toggle('active',currentLang==='vi');
+ document.getElementById('langEn')?.classList.toggle('active',currentLang==='en');
+ setText('exportHtmlBtn',t.exportHtml); setText('exportCsvBtn',t.exportCsv); setText('pngTopBtn',t.png); setText('resetBtn',t.reset);
+ setText('personalEdition',t.personalEdition); setText('heroLead',t.heroLead);
+ setText('outcomesTitle',t.outcomesTitle); setText('outcome1',t.outcome1); setText('outcome2',t.outcome2); setText('outcome3',t.outcome3); setText('outcome4',t.outcome4);
+ setText('aspectsTitle',t.aspectsTitle); setText('aspectsIntro',t.aspectsIntro);
+ setText('peopleTitle',t.people); setText('peopleDesc',t.peopleDesc); setText('peopleRel',t.peopleRel);
+ setText('processTitle',t.process); setText('processDesc',t.processDesc); setText('processRel',t.processRel);
+ setText('techTitle',t.tech); setText('techDesc',t.techDesc); setText('techRel',t.techRel);
+ setText('dataTitle',t.data); setText('dataDesc',t.dataDesc); setText('dataRel',t.dataRel);
+ setText('overviewTitle',t.overview); setText('overviewHint',t.overviewHint);
+ setText('axisPeople',t.people); setText('axisProcess',t.process); setText('axisTech',t.tech); setText('axisData',t.data);
+ setText('guideTitle',t.guideTitle); setText('guideP1',t.guideP1); setText('guideP2',t.guideP2);
+ const sg=document.getElementById('scaleGuide');
+ if(sg) sg.innerHTML=t.scaleGuide.map(x=>`<div class="g"><strong>${x[0]}</strong><span><b>${x[1]}</b><br>${x[2]}</span></div>`).join('');
+ setText('resultsTitle',t.results); setText('ruleNote',t.rule); setText('currentTargetTitle',t.currentTarget); setText('gapTitle',t.gapTitle);
+ const sh=document.getElementById('scoreHead');
+ if(sh) sh.innerHTML='<tr>'+t.tableHead.map(x=>`<th>${x}</th>`).join('')+'</tr>';
+ setText('totalLabel',t.total); setText('priorityTitle',t.priority); setText('saveBtn',t.save); setText('pngBottomBtn',t.png); setText('printBtn',t.print);
+ setText('footerSource',t.footer);
+}
+
+function setLanguage(lang,initial=false){
+ currentLang=lang==='en'?'en':'vi';
+ localStorage.setItem('tin_ai_competency_lang',currentLang);
+ topicDefs=currentLang==='en'?topicDefsEN:topicDefsVI;
+ applyStaticTranslations();
+ if(!initial){
+   build();
+   window.scrollTo({top:0,behavior:'smooth'});
+ }
+}
+
+setLanguage(currentLang,true);
 build();
 </script>
 </body>
